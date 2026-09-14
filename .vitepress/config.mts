@@ -426,8 +426,15 @@ export default withMermaid({
               { text: 'Docker', link: '/docs/panel/installation/docker' },
               { text: 'Binary', link: '/docs/panel/installation/binary' },
               { text: 'Package Manager', link: '/docs/panel/installation/pkgmanager' },
-              { text: 'TrueNAS SCALE', link: '/docs/panel/installation/truenas' },
-              { text: 'Unraid', link: '/docs/panel/installation/unraid' },
+              {
+                text: 'External Methods',
+                link: '/docs/panel/installation/external-methods',
+                collapsed: true,
+                items: [
+                  { text: 'TrueNAS SCALE', link: '/docs/panel/installation/external-methods/truenas' },
+                  { text: 'Unraid', link: '/docs/panel/installation/external-methods/unraid' },
+                ]
+              },
             ],
           },
           { text: 'Updating', link: '/docs/panel/updating' },
