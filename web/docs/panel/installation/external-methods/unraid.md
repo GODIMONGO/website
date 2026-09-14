@@ -9,14 +9,14 @@ description: How to install Calagopus on Unraid using a Community Applications t
 This guide targets **Unraid 7.3+** and assumes the **Community Applications** plugin is installed (it ships on almost every Unraid install and provides the **Apps** tab).
 :::
 
-Calagopus ships an Unraid Community Applications template for the **All-in-One (AIO)** image, bundling the Panel and Wings in a single container. Unlike the [Docker AIO compose stack](./docker.md), the Unraid template does not include PostgreSQL or Valkey, you install those separately from the **Apps** tab onto the same Docker network as the panel.
+Calagopus ships an Unraid Community Applications template for the **All-in-One (AIO)** image, bundling the Panel and Wings in a single container. Unlike the [Docker AIO compose stack](../docker.md), the Unraid template does not include PostgreSQL or Valkey, you install those separately from the **Apps** tab onto the same Docker network as the panel.
 
 ::: info Running game servers on a NAS
 Wings will run fine in this setup, but game servers are CPU- and RAM-intensive workloads that compete with Unraid's array and other containers. This is well-suited for homelab use. For production hosting, consider running Wings on a dedicated machine connected to a standalone Panel instead.
 :::
 
 ::: info Why the container runs as root
-The AIO image runs Wings as root by default, it needs that to manage other containers via the Docker socket mounted in step 5. This is a deliberate, documented design choice with kernel-enforced isolation around it, not an oversight. See [Daemon isolation](../../about/security#daemon-isolation-wings) for what that does and doesn't expose, and how to enable rootless mode if you'd rather not run as root.
+The AIO image runs Wings as root by default, it needs that to manage other containers via the Docker socket mounted in step 5. This is a deliberate, documented design choice with kernel-enforced isolation around it, not an oversight. See [Daemon isolation](../../../about/security#daemon-isolation-wings) for what that does and doesn't expose, and how to enable rootless mode if you'd rather not run as root.
 :::
 
 ## 1. Create the Docker network
@@ -58,7 +58,7 @@ Back in the **Apps** tab, search for **Calagopus**, and click the template that 
 | Template | Use when |
 | --- | --- |
 | **calagopus-aio** | Standard install, Panel + Wings, no extensions |
-| **calagopus-heavy-aio** | You plan to install [extensions](../extensions/index.md), includes the build tooling needed to compile them |
+| **calagopus-heavy-aio** | You plan to install [extensions](../../extensions/index.md), includes the build tooling needed to compile them |
 
 On the configuration page:
 
@@ -88,7 +88,7 @@ http://unraid-ip:8000
 
 You will see the OOBE (Out Of Box Experience) setup screen where you create your first admin account and complete initial configuration.
 
-![Calagopus Panel OOBE](../oobe.webp)
+![Calagopus Panel OOBE](../../oobe.webp)
 
 ## Updating
 

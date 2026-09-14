@@ -16,7 +16,7 @@ Wings is included in the TrueNAS app and will work, but game servers are CPU- an
 :::
 
 ::: info Why the container runs as root
-The AIO image runs Wings as root by default, it needs that to manage other containers via the Docker socket. This is a deliberate, documented design choice with kernel-enforced isolation around it, not an oversight. See [Daemon isolation](../../about/security#daemon-isolation-wings) for what that does and doesn't expose, and how to enable rootless mode if you'd rather not run as root.
+The AIO image runs Wings as root by default, it needs that to manage other containers via the Docker socket. This is a deliberate, documented design choice with kernel-enforced isolation around it, not an oversight. See [Daemon isolation](../../../about/security#daemon-isolation-wings) for what that does and doesn't expose, and how to enable rootless mode if you'd rather not run as root.
 :::
 
 ## 1. Open the Apps Catalog
@@ -45,7 +45,7 @@ Fill in the required fields:
 | Variant | Use when |
 | --- | --- |
 | **AIO** | Standard install, Panel + Wings, no extensions |
-| **AIO Heavy** | You plan to install [extensions](../extensions/index.md), includes the build tooling needed to compile them |
+| **AIO Heavy** | You plan to install [extensions](../../extensions/index.md), includes the build tooling needed to compile them |
 
 - **Encryption Key**, a random string of 32 characters. Generate one in the TrueNAS shell:
 
@@ -83,7 +83,7 @@ http://<truenas-ip>:30438
 
 You will see the OOBE (Out Of Box Experience) setup screen where you create your first admin account and complete initial configuration.
 
-![Calagopus Panel OOBE](../oobe.webp)
+![Calagopus Panel OOBE](../../oobe.webp)
 
 ## Updating
 

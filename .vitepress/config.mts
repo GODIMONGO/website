@@ -433,7 +433,7 @@ export default withMermaid({
                 items: [
                   { text: 'TrueNAS SCALE', link: '/docs/panel/installation/external-methods/truenas' },
                   { text: 'Unraid', link: '/docs/panel/installation/external-methods/unraid' },
-                ]
+                ],
               },
             ],
           },
