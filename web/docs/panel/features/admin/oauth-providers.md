@@ -68,6 +68,10 @@ The **Mappings** tab automates access: whenever a user logs in through this prov
   - **Server Subuser** adds the user as a [subuser](../server/subusers.md); pick the **Server**, the subuser **Permissions**, and optionally **Ignored Files**.
 - **Revoke when not matched**: "Removes the assigned role or server subuser again when the matcher no longer matches on a later login", handy for mirroring, say, a Discord role into a panel role.
 
+::: info
+You cannot create a mapping that grants more than you hold yourself. A mapping whose role or subuser permissions exceed your own is rejected with `permissions: more permissions than self`. The same guard applies when editing a role that already grants permissions you lack, and when linking an OAuth account to a user whose role outranks yours.
+:::
+
 <img src="./images/oauth-providers/add-mapping.webp" width="310" alt="" />
 
 ### Matchers

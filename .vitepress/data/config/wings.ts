@@ -194,6 +194,12 @@ export const wingsConfigDoc: ConfigDoc = {
           default: 5,
         },
         {
+          key: 'api.request_log_limit',
+          description:
+            'The number of HTTP requests Wings writes a log line for each second, which keeps a busy node from drowning its own log. Once the budget for a second is spent the remaining requests are counted rather than logged, and the count is reported as a `suppressed N http request log lines (api.request_log_limit = 250)` line the next time a request gets through - if traffic stops, the summary waits until it resumes. The budget covers the whole process, not each route or client. Set to `0` to log every request.',
+          default: 250,
+        },
+        {
           key: 'api.trusted_proxies',
           description:
             'A list of trusted IP addresses from proxy servers (like Cloudflare, NGINX, or a Load Balancer) that Wings uses to resolve the actual IP address of a user using the `X-Forwarded-For` or `X-Real-IP` header.',

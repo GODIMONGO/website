@@ -9,6 +9,8 @@ The Files tab is a full file manager for your server: browse and sort, upload an
 
 ![File manager list view](./images/files/list.webp)
 
+The file manager has two views, and the page title tells you which one you are in. **List** is the table above, and **Tree** swaps it for a sidebar file tree next to an editor pane, for working across several files at once. The pair of buttons in the top right switches between them, as do the **Switch to List View** and **Switch to Tree View** [quick actions](../dashboard/index.md#quick-actions). Your choice is remembered per browser.
+
 ## The List View
 
 Files are listed with **Name**, **Size**, and **Modified** columns; click a column header to sort, click again to flip the direction. Single-click selects a row, double-click opens it, and typing a few letters jumps to the first matching entry. Inside a subdirectory, the top row takes you back up one level.
@@ -79,6 +81,8 @@ Some results show a short status instead of content:
 | **Match found, preview unavailable** | The file matched, but the node returned no context for it, usually because it is larger than the node's preview limit. |
 | **Preview unavailable** | The file's contents could not be read back. |
 | **Empty file** | The file matched the name or size filters and has no content. |
+
+A search that actually returns previews is recorded in the [activity log](./activity.md) as a `server:file.read-content` entry naming the directory searched, the files that matched, and a truncated copy of the query. A search by a user who only holds `files.read` never reaches file contents and so records nothing.
 
 ::: info
 How much the node will read for previews is capped by [`api.file_search_context`](../../../wings/configuration.md#api-file-search-context-max-matches) in the Wings configuration, separately from the **Max file size** on the search itself. A file over the node's budget still counts as a match; it just comes back without preview content.
@@ -155,6 +159,50 @@ Drag files from your device anywhere onto the page and a **Drop files here to up
 
 ::: info
 The maximum size per uploaded file is set by the Wings option [`api.upload_limit`](../../../wings/configuration.md#api-upload-limit) (default 100 MiB). For anything bigger, use SFTP.
+:::
+
+### Shared Upload State
+
+An upload in flight is staged as a `.upload-part` file next to its destination, and only gets its real name once every byte has arrived. A half-finished file therefore never sits in the listing looking complete.
+
+Uploads are not private to the tab that started them. Wings tracks each one and pushes its progress to everyone watching the server, so the same row updates for your other sessions and for anyone else with access to the file. The listing shows the name the file will end up with, never the `.upload-part` suffix, and replaces the size column with progress while the upload runs:
+
+| Row state | What you see |
+| --- | --- |
+| Uploading | Green row with an **Uploading 42%** badge, and `137.2 MiB / 320 MiB` in place of the size. |
+| Incomplete | Yellow row with an **Incomplete** badge. The upload has stopped without finishing. |
+| Someone else's | The same badges, plus `by <user>` next to them. Your own uploads are not attributed. |
+
+![](./images/files/uploads.webp)
+
+Seeing an upload needs the `files.read` permission, and a subuser whose [ignored files](./subusers.md#ignored-files) hide the destination does not see the upload either - the deny rule is matched against the name the file will end up with, so a partial cannot be used to peek at a path that is otherwise hidden.
+
+### Incomplete Uploads
+
+An upload that goes 30 seconds without progress is treated as incomplete. Its badge turns yellow, and a dismissible **Incomplete Uploads** banner appears above the listing:
+
+> Some uploads to this server never finished and their partial files are still on disk.
+
+**Review Uploads** on the banner, or the **Review Incomplete Uploads** entry in the [quick actions](../dashboard/index.md#quick-actions) palette (`Ctrl+Space`), opens a modal listing every partial file and how far it got. Dismissing the banner hides it for that server until you open the panel in a new tab; the quick action stays available as long as something is unfinished.
+
+<img src="./images/files/incomplete-uploads-modal.webp" width="220" alt="Incomplete Uploads modal" />
+
+How to clear one depends on where it came from:
+
+| Partial file | How to deal with it |
+| --- | --- |
+| Yours, still in this session | Right-click the row for **Pause**, **Resume**, and **Cancel**, or use the upload popover next to the toolbar. Cancelling deletes the partial file from the node for you. |
+| Yours, after a page reload | The browser no longer holds the file's contents, so the row offers **Re-select file to resume**. Pick the same file again and it carries on from where it stopped. |
+| Someone else's, or left by a wings restart | Delete the partial file from the listing. Restart leftovers are listed without an owner or a total size and cannot be resumed at all. |
+
+::: info
+Only uploads larger than 95 MiB are sent in chunks, and only those can be paused and resumed. Anything smaller goes up in a single request, so **Cancel** is the only action offered on the row.
+
+The 30-second threshold only decides when the panel calls an upload incomplete. Wings keeps tracking an abandoned partial for 24 hours before it drops the record, and the `.upload-part` file itself stays on disk until something deletes it. Nothing reclaims that space on its own, so a server that repeatedly loses connections mid-upload is worth checking.
+:::
+
+::: warning
+Staging appends `.upload-part` to the name, so a file whose name is longer than 243 bytes cannot be uploaded through the file manager at all - wings rejects it with `file name too long`. Use SFTP for those, or shorten the name.
 :::
 
 ### Pulling from a URL

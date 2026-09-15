@@ -121,6 +121,15 @@ Default:
 APP_DEBUG=false
 ```
 
+## APP_REQUEST_LOG_LIMIT
+
+The number of HTTP requests the Panel writes a log line for each second, so a traffic spike cannot bury everything else in the log. Once the budget for a second is spent the remaining requests are counted rather than logged, and the count is reported as a `suppressed N http request log lines (APP_REQUEST_LOG_LIMIT = 250)` line the next time a request gets through - if traffic stops, the summary waits until it resumes. The budget covers the whole process, not each route or client. Set to `0` to log every request. A value that is not a number stops the Panel from starting.
+
+Default:
+```plaintext
+APP_REQUEST_LOG_LIMIT=250
+```
+
 ## APP_ENABLE_WINGS_PROXY
 
 When enabled, the Panel proxies traffic between users and Wings. This simplifies homelab setups but routes all Wings traffic through the panel, which can be a bottleneck in high-traffic environments. Typically leave this `false` in production.
@@ -141,7 +150,7 @@ APP_DISABLE_FRONTEND=false
 
 ## APP_USE_DECRYPTION_CACHE
 
-When enabled, decrypted secrets are temporarily stored in Redis for faster access. Improves performance but means decrypted values are present in cache - evaluate against your threat model before enabling.
+When enabled, decrypted secrets are kept in the Panel process memory for 30 seconds so repeated reads skip the decryption step. They are never written to Redis. Improves performance but means decrypted values stay in memory longer - evaluate against your threat model before enabling.
 
 Default:
 ```plaintext

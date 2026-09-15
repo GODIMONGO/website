@@ -41,6 +41,8 @@ See the [Permissions Reference](../dashboard/permissions.md#server-permissions) 
 
 As you type, the gutter next to each line shows how many files currently match ("12 matched" or "No matches"); `!` lines are marked "Exception". Past 20 patterns, counting is no longer automatic and a **Count Matches** button appears instead.
 
+A partially uploaded file is matched against the name it will end up with, not the `.upload-part` name it carries while in flight, so a pattern cannot be side-stepped by grabbing the partial file over SFTP mid-upload.
+
 Toggle **Preview ignored files** for a small file browser where everything the patterns hide is struck through and tagged **Ignored**. Both the counts and the preview need the `files.read` permission.
 
 ## Editing and Removing

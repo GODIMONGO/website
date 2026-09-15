@@ -258,6 +258,14 @@ Default value:
 max_jwt_uses: 5
 ```
 
+### api.request_log_limit
+The number of HTTP requests Wings writes a log line for each second, which keeps a busy node from drowning its own log. Once the budget for a second is spent the remaining requests are counted rather than logged, and the count is reported as a `suppressed N http request log lines (api.request_log_limit = 250)` line the next time a request gets through - if traffic stops, the summary waits until it resumes. The budget covers the whole process, not each route or client. Set to `0` to log every request.
+
+Default value:
+```yaml
+request_log_limit: 250
+```
+
 ### api.trusted_proxies
 A list of trusted IP addresses from proxy servers (like Cloudflare, NGINX, or a Load Balancer) that Wings uses to resolve the actual IP address of a user using the `X-Forwarded-For` or `X-Real-IP` header.
 
@@ -1922,6 +1930,7 @@ api:
   file_compression_threads: 2
   upload_limit: 100
   max_jwt_uses: 5
+  request_log_limit: 250
   trusted_proxies: []
   schedule:
     steps:
@@ -2223,6 +2232,7 @@ api:
   file_compression_threads: 2
   upload_limit: 100
   max_jwt_uses: 5
+  request_log_limit: 250
   trusted_proxies: []
   schedule:
     steps:

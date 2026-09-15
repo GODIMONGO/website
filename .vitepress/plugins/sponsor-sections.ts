@@ -2,7 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fetchJson } from '../lib/fetch-retry.ts';
 
-const API_URL = 'https://bot.calagopus.com/api/sponsors/sections';
+const API_URL = 'https://calagopus.com/api/sponsors/sections';
 const SPONSORS_PAGE = '/docs/about/sponsors';
 
 interface ApiSection {

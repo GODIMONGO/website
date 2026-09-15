@@ -432,23 +432,32 @@ Sources: [effective permissions and scope intersection](https://github.com/calag
 
 ### Encryption and cache trust
 
-Node tokens, backup credentials, and database passwords use the Panel's encrypted
-secret storage, keyed by `APP_ENCRYPTION_KEY`. The running Panel must be able to
-decrypt these values to use them. Encryption therefore does not protect them
-from a compromised Panel process or an attacker who also obtains its key.
+Node tokens, backup credentials, database passwords, and two-factor seeds use the
+Panel's encrypted secret storage, keyed by `APP_ENCRYPTION_KEY`. The running Panel
+must be able to decrypt these values to use them. Encryption therefore does not
+protect them from a compromised Panel process or an attacker who also obtains its
+key.
+
+::: info Two-factor seeds encrypted from 1.2.2
+Two-factor seeds were stored in plaintext before 1.2.2. Upgrading encrypts new and
+changed seeds immediately, but an existing account's seed is only converted the next
+time that user verifies a code, so plaintext seeds linger in the database for accounts
+that never sign in again.
+:::
 
 ::: warning Optional decrypted-secret cache
 `APP_USE_DECRYPTION_CACHE` is off by default. Enabling it allows the encrypted-secret
-helper to cache decrypted values for 30 seconds. Treat Redis/Valkey as trusted
-infrastructure, including when this option is off: the Panel also uses it for
-application and authentication state.
+helper to hold decrypted values for 30 seconds, in the Panel process's own memory and
+capped at 16384 entries - nothing decrypted is written to Redis/Valkey. Treat
+Redis/Valkey as trusted infrastructure regardless of this option: the Panel uses it for
+application and authentication state either way.
 :::
 
 Keep the encryption key secret and backed up separately. Losing it makes the
 stored encrypted values unusable; changing it requires re-encrypting those
 values. See the [Panel environment reference](../panel/environment).
 
-Sources: [encrypted value type](https://github.com/calagopus/panel/blob/7e5c1b2ec4b050c9b078548f7557abee9843ce74/shared/src/crypt.rs#L63-L115), [encryption and decrypted cache](https://github.com/calagopus/panel/blob/7e5c1b2ec4b050c9b078548f7557abee9843ce74/shared/src/database.rs#L123-L258), [cache option default](https://github.com/calagopus/panel/blob/7e5c1b2ec4b050c9b078548f7557abee9843ce74/shared/src/env.rs#L287-L290).
+Sources: [encrypted value type](https://github.com/calagopus/panel/blob/f5420088caddf1b929bf31d8a8aed1e05865e706/shared/src/crypt.rs#L67-L119), [encryption and decrypted cache](https://github.com/calagopus/panel/blob/f5420088caddf1b929bf31d8a8aed1e05865e706/shared/src/database.rs#L151-L243), [cache option default](https://github.com/calagopus/panel/blob/f5420088caddf1b929bf31d8a8aed1e05865e706/shared/src/env.rs#L297-L300), [two-factor seed encryption](https://github.com/calagopus/panel/blob/f5420088caddf1b929bf31d8a8aed1e05865e706/shared/src/models/user/mod.rs#L445-L510).
 
 ## Supply chain and build integrity
 

@@ -15,7 +15,7 @@ SSH keys added here are used for SFTP and SSH logins to Wings, the node daemon, 
 
 <img src="./images/ssh-keys/create-form.webp" width="220" alt="" />
 
-**Import** skips the copy-pasting entirely: pick **GitHub**, **GitLab**, or **Launchpad**, enter your **Username** there, and the panel imports the public keys published on that account, all of them at once if there are several.
+**Import** skips the copy-pasting entirely: pick **GitHub**, **GitLab**, or **Launchpad**, enter your **Username** there, and the panel imports the public keys published on that account, all of them at once if there are several. If you are already at your key limit the import is refused outright with `maximum number of ssh keys reached`; otherwise it imports only as many keys as you have room left for.
 
 <img src="./images/ssh-keys/import-form.webp" width="221" alt="" />
 

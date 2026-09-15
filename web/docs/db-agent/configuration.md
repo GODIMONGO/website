@@ -380,6 +380,14 @@ Default value:
 disable_openapi_docs: false
 ```
 
+### api.request_log_limit
+The number of HTTP requests the agent writes a log line for each second, which keeps a busy agent from drowning its own log. Once the budget for a second is spent the remaining requests are counted rather than logged, and the count is reported as a `suppressed N http request log lines (api.request_log_limit = 250)` line the next time a request gets through - if traffic stops, the summary waits until it resumes. The budget covers the whole process, not each route or client. Set to `0` to log every request.
+
+Default value:
+```yaml
+request_log_limit: 250
+```
+
 ### api.disable_remote_import
 Whether to prevent databases from being imported directly from a remote database through a connection string. When disabled, the import endpoint rejects every request instead of dumping the source.
 
@@ -578,6 +586,7 @@ api:
     key: key.pem
   token: ''
   disable_openapi_docs: false
+  request_log_limit: 250
   disable_remote_import: false
   remote_import_blocked_cidrs:
   - 0.0.0.0/8
