@@ -34,6 +34,7 @@ The last two control what users see on their own [OAuth Links](../dashboard/oaut
 | **Scopes** | "The OAuth2 scopes to request, make sure to include scopes for email and profile info when needed." |
 | **Identifier Path** | Required. Extracts the unique user identifier from the Info URL response. |
 | **Email Path** / **Username Path** / **First Name Path** / **Last Name Path** | Optional paths for profile fields, used to fill in accounts registered through this provider. |
+| **Avatar URL Template** / **Overwrite Existing Avatars** | Optional. Import the user's profile picture from the provider, see [Avatars](#avatars). |
 | **Only allow Login** / **Bypass 2FA on Login** / **Link Viewable to User** / **Link Manageable by User** / **Enabled** | The behavior switches; the first and last three are [explained above](#oauth-providers). |
 
 The path fields use JSONPath syntax (see [serdejsonpath.live](https://serdejsonpath.live)) evaluated against the Info URL response.
@@ -45,6 +46,24 @@ The path fields use JSONPath syntax (see [serdejsonpath.live](https://serdejsonp
 Finish with **Save** (or **Save & Stay** when creating). An existing provider also offers **Export** (as JSON or YAML), **Duplicate**, **Delete**, and a **View Documentation** shortcut to the setup guides.
 
 ![Configured provider with censored credentials](./images/oauth-providers/general.webp)
+
+
+## Avatars
+
+**Avatar URL Template** pulls the user's profile picture from the provider. Leave it empty and the panel never touches avatars. Fill it in and every login or link through the provider imports the picture it points at. The download runs in the background, so a slow or unreachable image host never holds up the login.
+
+The template is a URL with `{...}` placeholders, each holding a JSONPath into the Info URL response. What happens to a resolved value depends on where its placeholder sits:
+
+- A template that is *only* a placeholder, such as `{$.picture}`, is used verbatim. This is what most OIDC providers need, because the profile response already carries the full image URL.
+- Anywhere else the placeholder stands for one path or query component and its value is percent-encoded, so a provider cannot smuggle a different URL into the rest of the template. Discord, which hands back an id and an avatar hash instead of a URL, needs `https://cdn.discordapp.com/avatars/{$.id}/{$.avatar}.png`.
+
+That second rule catches people out when they try to tack something onto a whole-URL placeholder. `{$.picture}?size=512` is no longer a lone placeholder, so the entire picture URL gets percent-encoded into the path of a URL that goes nowhere. Either use the placeholder alone, or spell the whole URL out around the pieces the provider gives you.
+
+A placeholder that resolves to nothing (missing, `null`, or an empty string) means "this user has no avatar" and quietly skips the import. A template that resolves to something other than an `http` or `https` URL is an error instead: the login still goes through, but the panel logs a warning and the user keeps whatever avatar they had.
+
+The download accepts the same formats as an upload, PNG, JPEG, WebP, or GIF, and ends up as the same 512x512 WebP, but the limits around it are its own: at most 8 MB and 2048 pixels on either side, with no minimum size.
+
+**Overwrite Existing Avatars** decides who gets one. Off, the import only runs for users who have no avatar at all, leaving anything they uploaded themselves alone. On, it runs every time and replaces theirs, though a picture whose URL has not changed since the last import is recognised and not downloaded again. [Frozen](./users.md) accounts are skipped either way.
 
 
 ## Import

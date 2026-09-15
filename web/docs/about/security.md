@@ -225,6 +225,24 @@ controls for restrictions that must also apply to containers.
 
 Sources: [address filtering](https://github.com/calagopus/wings/blob/f79492ea5ad89c8e7c844fbd77dac32933eb5ef2/application/src/net.rs#L19-L103), [remote-pull client](https://github.com/calagopus/wings/blob/f79492ea5ad89c8e7c844fbd77dac32933eb5ef2/application/src/server/filesystem/pull/mod.rs#L19-L96), [scheduled HTTP requests](https://github.com/calagopus/wings/blob/f79492ea5ad89c8e7c844fbd77dac32933eb5ef2/application/src/server/schedule/http.rs#L33-L205), [blocked-range defaults](https://github.com/calagopus/wings/blob/f79492ea5ad89c8e7c844fbd77dac32933eb5ef2/application/src/config.rs#L37-L94).
 
+### Outbound requests made by the Panel
+
+The Panel's own HTTP client resolves every hostname through a filtering resolver
+that drops answers in blocked CIDRs, re-checks each redirect target, allows at
+most ten redirects, and ignores environment proxy settings. Most of what it
+fetches is admin-configured, so the URL is only as trustworthy as the admin who
+typed it.
+
+The exception is the [avatar import](../panel/features/admin/oauth-providers.md#avatars),
+where the URL is assembled from an OAuth provider's profile response. Placeholders
+that are not the whole template are percent-encoded so a value cannot rewrite the
+rest of the URL, the result must be an `http` or `https` URL under 2048 characters,
+and the download stops at 8 MB. A provider you point the Panel at can still choose
+which public URL it gets fetched, so treat the Avatar URL Template as trust placed
+in that provider.
+
+Sources: [outbound client](https://github.com/calagopus/panel/blob/8843e3b4cfb17b831ae4bae495e12693fbd2567a/shared/src/net.rs#L155-L188), [address filtering](https://github.com/calagopus/panel/blob/8843e3b4cfb17b831ae4bae495e12693fbd2567a/shared/src/net.rs#L31-L108), [avatar url resolution](https://github.com/calagopus/panel/blob/8843e3b4cfb17b831ae4bae495e12693fbd2567a/shared/src/models/oauth_provider.rs#L394-L452), [avatar download](https://github.com/calagopus/panel/blob/8843e3b4cfb17b831ae4bae495e12693fbd2567a/shared/src/models/user/avatar.rs#L151-L191).
+
 ### Server firewalls
 
 Wings can apply source-address, protocol, and destination-port rules with nftables

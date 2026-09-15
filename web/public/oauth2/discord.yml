@@ -11,9 +11,11 @@ email_path: '$.email'
 username_path: '$.username'
 name_first_path: null
 name_last_path: null
+avatar_url_template: 'https://cdn.discordapp.com/avatars/{$.id}/{$.avatar}.png'
+avatar_overwrite: false
 enabled: true
 login_only: true
-login_bypass_2fa: false
+login_bypass_two_factor: false
 link_viewable: true
 user_manageable: true
 basic_auth: false

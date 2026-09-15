@@ -10,9 +10,11 @@ email_path: '$.email'
 username_path: '$.name'
 name_first_path: null
 name_last_path: null
+avatar_url_template: '{$.avatar_url}'
+avatar_overwrite: false
 enabled: true
 login_only: false
-login_bypass_2fa: false
+login_bypass_two_factor: false
 link_viewable: true
 user_manageable: true
 basic_auth: false

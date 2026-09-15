@@ -12,9 +12,11 @@ email_path: '$.email'
 username_path: '$.preferred_username'
 name_first_path: '$.given_name'
 name_last_path: '$.family_name'
+avatar_url_template: '{$.picture}'
+avatar_overwrite: false
 enabled: true
 login_only: false
-login_bypass_2fa: false
+login_bypass_two_factor: false
 link_viewable: true
 user_manageable: true
 basic_auth: false

@@ -87,7 +87,7 @@ Storage paths are global - whatever you write to `foo/bar.txt` is reachable as `
 | Prefix | Public? | What it's for |
 | --- | --- | --- |
 | `assets/` | Yes | Admin assets - logos, branding images, anything the admin panel needs publicly available. |
-| `avatars/` | Yes | User avatar images. Structure is `avatars/{user_uuid}/{random}.webp`. **Don't write here directly** unless you're confident; the core Panel manages this and a botched write can leave a user with a missing or corrupted avatar. |
+| `avatars/` | Yes | User avatar images. Structure is `avatars/{user_uuid}/{identifier}.webp`, where the identifier is random for an uploaded avatar and derived from the source URL for one imported from an OAuth provider. **Don't write here directly** unless you're confident; the core Panel manages this and a botched write can leave a user with a missing or corrupted avatar. |
 | `publicdata/` | Yes | Currently unused by the base Panel; available for extension use. Suggested structure: `publicdata/extensions/{your.package.identifier}/...`. |
 | `privatedata/` | No | Not publicly accessible. Same suggested structure as `publicdata/`: `privatedata/extensions/{your.package.identifier}/...`. |
 

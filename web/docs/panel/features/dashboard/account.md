@@ -78,3 +78,5 @@ Once you have an avatar set, upload a new file and hit **Update** to replace it,
 Uploads must be PNG, JPEG, WebP or GIF, and between 64 and 4096 pixels on both sides; the file type is checked by content, not by its extension. Whatever you upload is re-encoded to a 512x512 WebP, so there is no benefit to sending anything larger.
 
 <img src="./images/account/avatar-set.webp" width="338" alt="" />
+
+An administrator can also configure an OAuth provider to bring your picture over from [the account you log in with](./oauth-links.md). Unless they turned overwriting on for that provider, the import only fills an empty avatar, so one you uploaded yourself stays put. That does mean **Remove** won't stick while such a provider is configured: the next login through it sees an empty avatar and imports the picture again.

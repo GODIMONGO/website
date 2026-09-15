@@ -64,6 +64,8 @@ Back in the panel, enter the Client ID and Client Secret you copied from Discord
 
 On the switches below, choose if you want to enable Discord OAuth, only allow login, allow the user to view the connection and allow the user to link and unlink their accounts.
 
+The template also fills in the Avatar URL Template, so a user's Discord avatar becomes their panel avatar the first time they log in. Clear that field if you'd rather leave avatars alone, or read [Avatars](../../panel/features/admin/oauth-providers.md#avatars) for what it does.
+
 It should normally look like this:
 ![Discord Config](./files/images/discord/page.webp)
 

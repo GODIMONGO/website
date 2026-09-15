@@ -13,6 +13,8 @@ These are example files made by the community that you can use as a preset. You 
 Pocket-ID: <a href="/oauth2/pocket-id.yml" download>Download <code>pocket-id.yml</code> ➚</a>\
 Authentik: <a href="/oauth2/authentik.yml" download>Download <code>authentik.yml</code> ➚</a>
 
+Both presets import the user's profile picture from the provider's `picture` claim. Pocket-ID always sends one. Authentik only does from version 2026.8 onwards, and on 2026.8.0 specifically the generated fallback avatars come back as a `data:` URI the panel won't fetch, so avatars there need a patched 2026.8.
+
 If your provider isn't listed here, you may have to follow the steps below to adapt to your setup.
 
 ### Find the required identifiers
@@ -32,13 +34,14 @@ Visit the well-known URL in a browser (e.g. `https://id.example.com/.well-known/
 | **Info URL**   | `userinfo_endpoint`      |
 
 On the same JSON object, look for the `claims_supported` key, and find the claims you need. Below are some JSON path examples that you could use, although you may need to tweak them a little for your specific provider.
-| Identifier          | Example                | Required |
-|---------------------|------------------------|----------|
-| **Identifier Path** | `$.sub`                | :white_check_mark:        |
-| **Email Path**      | `$.email`              | :x:        |
-| **Username Path**   | `$.preferred_username` | :x:        |
-| **First Name Path** | `$.given_name`         | :x:        |
-| **Last Name Path**  | `$.family_name`        | :x:        |
+| Identifier              | Example                | Required |
+|-------------------------|------------------------|----------|
+| **Identifier Path**     | `$.sub`                | :white_check_mark:        |
+| **Email Path**          | `$.email`              | :x:        |
+| **Username Path**       | `$.preferred_username` | :x:        |
+| **First Name Path**     | `$.given_name`         | :x:        |
+| **Last Name Path**      | `$.family_name`        | :x:        |
+| **Avatar URL Template** | `{$.picture}`          | :x:        |
 
 Finally, look for the `scopes_supported` key, and find the scopes you need. Usually, you should only put `openid`, `profile` and `email`, but it may depend on your provider.
 
@@ -141,6 +144,22 @@ The Path to use to extract the last name from the Info URL response (https://ser
 
 Required: :x:\
 Example: `$.family_name`
+
+
+## Avatars
+### Avatar URL Template
+Where to fetch the user's profile picture from, so it becomes their panel avatar. Unlike the paths above this one is a URL, with `{...}` placeholders that get filled in from the Info URL response. Leave it empty and no avatar is ever imported.
+
+Providers that return the picture URL in the profile response, the standard OIDC `picture` claim, only need the placeholder on its own, and the value is used as-is. If yours hands back pieces instead, build the URL around them, for example `https://id.example.com/avatars/{$.sub}.png`; each piece is then percent-encoded so it cannot break out of the URL you wrote. Note that this also applies to something like `{$.picture}?size=512`, which is no longer a lone placeholder and will not do what you want.
+
+Required: :x:\
+Example: `{$.picture}`
+
+### Overwrite Existing Avatars
+Off, the avatar is imported for users who don't have one yet. On, it is re-imported on every login, replacing an avatar the user uploaded themselves.
+
+Required: :x:\
+Example: Off
 
 
 ## Options
