@@ -1,25 +1,25 @@
 ---
-description: Install the Calagopus panel with Docker, APT/RPM/APK package managers, a standalone binary, or platform-specific methods like TrueNAS SCALE and Unraid.
+description: Установите панель Calagopus через Docker, менеджеры пакетов APT/RPM/APK, автономный бинарный файл или специфичные для платформы методы, такие как TrueNAS SCALE и Unraid.
 ---
 
-# Panel Installation
+# Установка панели
 
-For a fresh Linux VPS, [Your first VPS](./first-vps.md) walks through the All-in-One installation, optional Caddy HTTPS, and your first game server.
+Для нового Linux VPS руководство [Ваш первый VPS](./first-vps.md) проведёт через установку All-in-One, опциональный HTTPS через Caddy и создание первого игрового сервера.
 
-Before installing, check the [minimum requirements](../overview.md#minimum-requirements).
+Перед установкой проверьте [минимальные требования](../overview.md#минимальные-требования).
 
-Choose your installation method:
+Выберите метод установки:
 
 ::::tabs
-=== Docker (Recommended)
-See the [Docker Panel Installation](./docker.md) guide. Runs the panel and its dependencies as containers, the recommended path for most deployments, and the only method that supports extensions out of the box.
+=== Docker (рекомендуется)
+См. руководство [Установка панели в Docker](./docker.md). Запускает панель и её зависимости как контейнеры — рекомендуемый путь для большинства развёртываний и единственный метод, поддерживающий расширения из коробки.
 
 === APT / RPM / APK
-See the [Package Manager Installation](./pkgmanager.md) guide. Install directly from the Calagopus repository using APT (Debian/Ubuntu), RPM (RHEL/Fedora), or APK (Alpine). Note that this method does not support extensions.
+См. руководство [Установка через менеджер пакетов](./pkgmanager.md). Установите напрямую из репозитория Calagopus через APT (Debian/Ubuntu), RPM (RHEL/Fedora) или APK (Alpine). Этот метод не поддерживает расширения.
 
-=== Binary
-See the [Binary Installation](./binary.md) guide. Download and run the panel binary directly on Linux, macOS, or Windows. Note that this method does not support extensions.
+=== Бинарный файл
+См. руководство [Установка бинарного файла](./binary.md). Скачайте и запустите бинарный файл панели напрямую на Linux, macOS или Windows. Этот метод не поддерживает расширения.
 
-=== External Methods
-See the [External Installation Methods](./external-methods/index.md) guide for platform-specific installs on TrueNAS SCALE, Unraid, and similar NAS/homelab platforms. Includes Wings in the same container.
+=== Сторонние методы
+См. руководство [Сторонние методы установки](./external-methods/index.md) для платформенно-специфичных установок на TrueNAS SCALE, Unraid и аналогичных NAS/homelab-платформах. Включает Wings в том же контейнере.
 ::::

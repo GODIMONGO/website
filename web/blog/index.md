@@ -1,16 +1,14 @@
 ---
-title: Blog
-description: Release announcements and news from the Calagopus project.
+title: Блог
+description: Анонсы релизов и новости проекта Calagopus.
 ---
 
-# Blog
+# Блог
 
-Release announcements and news from the Calagopus project. For the full changelog of every
-version, see the [releases](/docs/releases/) pages.
+Анонсы релизов и новости проекта Calagopus. Полный журнал изменений каждой версии — на страницах [релизов](/docs/releases/).
 
-## [Calagopus 1.2.0 released](./release-1.2.0.md)
+## [Вышел Calagopus 1.2.0](./release-1.2.0.md)
 
-*6 September 2026*
+*6 сентября 2026*
 
-Private networking between nodes, per-server firewalls, a keyboard-driven Quick Actions palette, a
-tree-style file editor, and DB Agent access control and backups.
+Частная сеть между узлами, брандмауэр для каждого сервера, палитра быстрых действий с управлением с клавиатуры, древовидный редактор файлов, а также управление доступом и резервные копии DB Agent.

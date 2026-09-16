@@ -1,17 +1,17 @@
 ---
-description: "What to do after installing the Calagopus panel: use your existing node or connect Wings, then add game server templates."
+description: "Что делать после установки панели Calagopus: используйте существующий узел или подключите Wings, затем добавьте шаблоны игровых серверов."
 ---
 
-# Next Steps
+# Дальнейшие шаги
 
-The panel is installed and the OOBE is complete. Here's what to do next:
+Панель установлена, а OOBE пройден. Вот что делать дальше:
 
-## Add a Node
+## Добавление узла
 
-The panel manages servers, while Wings runs their game containers. If setup already created your node, continue with egg repositories below. The All-in-One image creates **Integrated Node** automatically, so you don't need to register it or install Wings separately.
+Панель управляет серверами, а Wings запускает их игровые контейнеры. Если при настройке узел уже создан, переходите к репозиториям эггов ниже. Образ All-in-One создаёт **Integrated Node** автоматически, поэтому его не нужно регистрировать или отдельно устанавливать Wings.
 
-If you still need a node, follow [Configuring a New Node](../../wings/next-steps/configure-node.md) to register it and connect Wings to the panel.
+Если узел всё ещё нужен, следуйте руководству [Настройка нового узла](../../wings/next-steps/configure-node.md), чтобы зарегистрировать его и подключить Wings к панели.
 
-## Add Egg Repositories
+## Добавление репозиториев эггов
 
-Eggs define how a specific type of game server is installed and configured. Calagopus has a built-in egg repository system that lets you browse and import eggs from Git repositories. See [Adding Egg Repositories](./egg-repos.md) to get started.
+Эгги определяют, как конкретный тип игрового сервера устанавливается и настраивается. В Calagopus есть встроенная система репозиториев эггов, позволяющая просматривать и импортировать эгги из Git-репозиториев. Начните со страницы [Добавление репозиториев эггов](./egg-repos.md).

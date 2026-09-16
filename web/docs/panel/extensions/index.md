@@ -1,68 +1,68 @@
 ---
-description: "Extend the Calagopus panel with native Rust extensions: installing, developing, and publishing extensions plus core concept guides."
+description: "Расширяйте панель Calagopus нативными Rust-расширениями: установка, разработка и публикация расширений, а также руководства по ключевым концепциям."
 ---
 
-# Extensions
+# Расширения
 
-Extensions are the primary way to extend the functionality of the Panel. They allow you to add backend logic, frontend interfaces, database migrations, and deep system integrations in a structured and controlled way.
+Расширения — основной способ расширения функциональности панели. Они позволяют добавлять логику бэкенда, интерфейсы фронтенда, миграции баз данных и глубокие системные интеграции структурированно и контролируемо.
 
-For a high-level architectural breakdown of how extensions work within the system, see the [Technical Overview section](../overview.md#technical-overview).
+Высокоуровневый архитектурный разбор того, как расширения работают в системе, см. в разделе [Технический обзор](../overview.md#технический-обзор).
 
-## Getting Started
+## Начало работы
 
-If you are new to extensions, start here:
+Если вы новичок в расширениях, начните здесь:
 
-- [Installing Extensions](./installing-extensions.md) - Install `.c7s.zip` extensions in the Panel
-- [Uninstalling Extensions](./uninstalling-extensions.md) - How to remove extensions and what happens to their data
-- [Disabling Extensions](./disabling-extensions.md) - Turn an extension off without uninstalling or recompiling it
-- [Switching to the Heavy Image](./switching-to-the-heavy-image.md) - Use the `:heavy` Docker image variant to enable extension support in a containerized setup
-- [Patching and Adding Translations](./patching-translations.md) - Override the Panel's built-in translations or add a new language on the heavy image
-- [Development Environment](./dev-environment.md) - Set up a local environment for building extensions
-- [Extension File Structure](./file-structure.md) - How extensions are structured across frontend, backend, and database layers
+- [Установка расширений](./installing-extensions.md) — установка расширений `.c7s.zip` в панели
+- [Удаление расширений](./uninstalling-extensions.md) — как удалять расширения и что происходит с их данными
+- [Отключение расширений](./disabling-extensions.md) — выключите расширение без удаления или перекомпиляции
+- [Переход на тяжёлый образ](./switching-to-the-heavy-image.md) — используйте вариант Docker-образа `:heavy`, чтобы включить поддержку расширений в контейнерной установке
+- [Исправление и добавление переводов](./patching-translations.md) — переопределите встроенные переводы панели или добавьте новый язык на тяжёлом образе
+- [Среда разработки](./dev-environment.md) — настройте локальное окружение для сборки расширений
+- [Структура файлов расширения](./file-structure.md) — как расширения структурированы между фронтендом, бэкендом и слоями базы данных
 
-## Concepts
+## Концепции
 
-Extensions are built around several core systems:
+Расширения построены вокруг нескольких ключевых систем:
 
-- [Theming](./concepts/theming.md) - Customize the look and feel of the Panel interface
-- [Events](./concepts/events.md) - React to system and user actions
-- [Settings](./concepts/settings.md) - Define configurable extension options
-- [Routing](./concepts/routing.md) - Add custom backend routes
-- [Permissions](./concepts/permissions.md) - Control access to extension features
-- [CLI Commands](./concepts/cli-commands.md) - Extend the Panel command line interface
-- [Background Tasks and Shutdown Handlers](./concepts/background-tasks-and-shutdown-handlers.md) - Run async or lifecycle-based logic
-- [Update Checks and Extension Calls](./concepts/update-checks-and-extension-calls.md) - Communicate between extensions and system services
-- [Frontend API Calls](./concepts/frontend-api.md) - Interact with backend APIs from the UI
-- [Activity Logging](./concepts/activity-logging.md) - Record extension-related actions
-- [Translations](./concepts/translations.md) - Provide multi-language support
-- [Mounting UI](./concepts/mounting-ui.md) - Inject UI elements into the Panel interface
-- [Quick Actions](./concepts/quick-actions.md) - Add entries, categories and prefix modes to the command palette
-- [Toasts](./concepts/toasts.md) - Show transient feedback to the user
-- [Extending Models](./concepts/extending-models.md) - Add fields to existing data models
-- [Email Templates](./concepts/email-templates.md) - Define custom email templates for notifications and communications
-- [Speaking Game Protocols](./concepts/speaking-game-protocols.md) - Open raw TCP/UDP tunnels to a server's port to query it directly
-- [File Storage](./concepts/file-storage.md) - Manage files and directories within the Panel
-- [Forms](./concepts/forms.md) - Add fields to the Panel's existing forms
-- [User Settings](./concepts/user-settings.md) - Store per-user preferences that sync across devices
+- [Темизация](./concepts/theming.md) — настройка внешнего вида интерфейса панели
+- [События](./concepts/events.md) — реагирование на системные и пользовательские действия
+- [Настройки](./concepts/settings.md) — определение настраиваемых параметров расширения
+- [Маршрутизация](./concepts/routing.md) — добавление собственных маршрутов бэкенда
+- [Разрешения](./concepts/permissions.md) — управление доступом к функциям расширения
+- [CLI-команды](./concepts/cli-commands.md) — расширение интерфейса командной строки панели
+- [Фоновые задачи и обработчики завершения](./concepts/background-tasks-and-shutdown-handlers.md) — выполнение асинхронной или жизненно-цикловой логики
+- [Проверка обновлений и вызовы расширений](./concepts/update-checks-and-extension-calls.md) — обмен данными между расширениями и системными сервисами
+- [Вызовы API из фронтенда](./concepts/frontend-api.md) — взаимодействие с API бэкенда из UI
+- [Журналирование активности](./concepts/activity-logging.md) — запись действий, связанных с расширением
+- [Переводы](./concepts/translations.md) — поддержка нескольких языков
+- [Монтирование UI](./concepts/mounting-ui.md) — внедрение элементов UI в интерфейс панели
+- [Быстрые действия](./concepts/quick-actions.md) — добавление записей, категорий и префиксных режимов в палитру команд
+- [Тосты](./concepts/toasts.md) — показ кратковременной обратной связи пользователю
+- [Расширение моделей](./concepts/extending-models.md) — добавление полей к существующим моделям данных
+- [Шаблоны писем](./concepts/email-templates.md) — определение собственных шаблонов писем для уведомлений и коммуникаций
+- [Обращение к игровым протоколам](./concepts/speaking-game-protocols.md) — открытие «сырых» TCP/UDP-туннелей к порту сервера для прямых запросов
+- [Файловое хранилище](./concepts/file-storage.md) — управление файлами и каталогами в панели
+- [Формы](./concepts/forms.md) — добавление полей к существующим формам панели
+- [Пользовательские настройки](./concepts/user-settings.md) — хранение предпочтений пользователя, синхронизируемых между устройствами
 
-## Installation Methods
+## Методы установки
 
-Extensions can be installed in multiple ways depending on your setup:
+Расширения можно установить несколькими способами в зависимости от установки:
 
-- Docker-based installation (requires `:heavy` or `:nightly-heavy` image)
-- Development environment installation
-- Manual `.c7s.zip` placement into the extensions directory
+- Установка на базе Docker (требуется образ `:heavy` или `:nightly-heavy`)
+- Установка в среде разработки
+- Ручное размещение `.c7s.zip` в каталоге расширений
 
-See [Installing Extensions](./installing-extensions.md) for full instructions.
+Полные инструкции см. в [Установка расширений](./installing-extensions.md).
 
-## Structure Overview
+## Обзор структуры
 
-Extensions follow a standardized multi-part structure consisting of:
+Расширения следуют стандартизованной многочастной структуре:
 
-- Frontend (React-based UI layer)
-- Backend (Rust-based logic layer)
-- Database migrations (optional)
+- Фронтенд (UI-слой на React)
+- Бэкенд (слой логики на Rust)
+- Миграции базы данных (опционально)
 
-This structure defines how extensions are loaded, initialized, and integrated into the Panel.
+Эта структура определяет, как расширения загружаются, инициализируются и интегрируются в панель.
 
-For a complete breakdown of directories, required files, package naming, and extension entrypoints, see [Extension File Structure](./file-structure.md).
+Полный разбор каталогов, обязательных файлов, именования пакетов и точек входа см. в [Структуре файлов расширения](./file-structure.md).

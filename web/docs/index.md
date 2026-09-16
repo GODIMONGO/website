@@ -1,14 +1,14 @@
 ---
-title: Documentation
-description: Official Calagopus documentation. Learn how to install the panel, deploy Wings on game server nodes, and build custom extensions.
+title: Документация
+description: Официальная документация Calagopus. Узнайте, как установить панель, развернуть Wings на узлах игровых серверов и создавать собственные расширения.
 ---
 
-![Calagopus Logo](/fulllogo.svg)
+![Логотип Calagopus](/fulllogo.svg)
 
-# Documentation
+# Документация
 
-Setting up your first VPS? Follow [Your first VPS](./panel/installation/first-vps.md) to install Calagopus, with or without a domain, and get a Minecraft server running.
+Настраиваете свой первый VPS? Следуйте руководству [Ваш первый VPS](./panel/installation/first-vps.md), чтобы установить Calagopus — с доменом или без него — и запустить сервер Minecraft.
 
-Calagopus is made up of three components, each with its own section here: the [Panel](./panel/index.md) (the web interface and API you and your users interact with), [Wings](./wings/index.md) (the node daemon that runs game servers in Docker containers), and the optional [DB Agent](./db-agent/index.md) (containerized database provisioning for your servers). The [Additional](./additional/index.md) section covers cross-cutting setup like SSL certificates, reverse proxies, OAuth, and migrating from Pterodactyl or Pelican, while [Integrations](./integrations/index.md) documents billing panels (WHMCS, Blesta, Paymenter) and tooling for hosting providers.
+Calagopus состоит из трёх компонентов, каждому из которых посвящён отдельный раздел: [Панель](./panel/index.md) (веб-интерфейс и API, с которыми взаимодействуете вы и ваши пользователи), [Wings](./wings/index.md) (демон на узле, который запускает игровые серверы в Docker-контейнерах) и необязательный [DB Agent](./db-agent/index.md) (контейнеризованное предоставление баз данных для ваших серверов). В разделе [Дополнительно](./additional/index.md) описана сквозная настройка: SSL-сертификаты, обратные прокси, OAuth и миграция с Pterodactyl или Pelican, а [Интеграции](./integrations/index.md) — документация по биллинговым панелям (WHMCS, Blesta, Paymenter) и инструментам для хостинг-провайдеров.
 
-New to Calagopus entirely? Start with [What is Calagopus?](./about/what-is-calagopus.md) for the big picture. To get the panel running, head to the [Installation Guide](./panel/installation/index.md). For questions or community support, join the [Discord](https://discord.gg/uSM8tvTxBV).
+Только знакомитесь с Calagopus? Начните со страницы [Что такое Calagopus?](./about/what-is-calagopus.md) для общей картины. Чтобы запустить панель, перейдите к [руководству по установке](./panel/installation/index.md). С вопросами или за поддержкой сообщества заходите в [Discord](https://discord.gg/uSM8tvTxBV).

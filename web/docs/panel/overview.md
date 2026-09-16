@@ -1,24 +1,24 @@
 ---
-title: Panel Overview
-description: Overview of the Calagopus Panel, the central web UI and backend for game server management. Covers minimum requirements, the React + Rust tech stack, and real-world resource usage.
+title: Обзор панели
+description: Обзор панели Calagopus — центрального веб-интерфейса и бэкенда для управления игровыми серверами. Описаны минимальные требования, технический стек React + Rust и реальное потребление ресурсов.
 ---
 
-# Panel
+# Панель
 
-The Calagopus **Panel** is the central management interface for game servers and related services. It provides the web UI and backend that handle server orchestration, user management, and integrations. The panel alone doesn't host game servers - for that you also need [Wings](../wings/overview.md) running on at least one node.
+Панель Calagopus (**Panel**) — это центральный интерфейс управления игровыми серверами и связанными сервисами. Она предоставляет веб-интерфейс и бэкенд, которые отвечают за оркестрацию серверов, управление пользователями и интеграции. Сама по себе панель не размещает игровые серверы — для этого также нужен [Wings](../wings/overview.md), запущенный хотя бы на одном узле.
 
-The interface works on phones and tablets as well as desktops. The sidebar becomes a drawer on small screens, the console and file manager support touch selection and long-press menus, layouts account for the on-screen keyboard, and the file editor defaults to a touch-oriented engine on those devices.
+Интерфейс работает на телефонах и планшетах так же, как и на десктопах. Боковая панель превращается в выдвижную на маленьких экранах, консоль и файловый менеджер поддерживают выбор касанием и меню по долгому нажатию, макеты учитывают экранную клавиатуру, а файловый редактор по умолчанию использует ориентированный на касания движок на этих устройствах.
 
-## Minimum Requirements
+## Минимальные требования
 
-- **Operating System**: Windows 10 or later, macOS, Ubuntu 22.04 LTS or later, Debian 11 or later, or anything that supports modern Docker versions
-- **CPU Architecture**: x86_64, ARM64, RISC-V, or PPC64LE (extensions require x86_64 or ARM64)
-- **RAM**: 512 MB minimum (1 GB recommended; 2 GB recommended when using extensions)
-- **Disk Space**: 1 GB minimum (10 GB recommended when using extensions)
+- **Операционная система**: Windows 10 или новее, macOS, Ubuntu 22.04 LTS или новее, Debian 11 или новее, либо любая ОС, поддерживающая современные версии Docker
+- **Архитектура CPU**: x86_64, ARM64, RISC-V или PPC64LE (расширения требуют x86_64 или ARM64)
+- **ОЗУ**: минимум 512 МБ (рекомендуется 1 ГБ; при использовании расширений рекомендуется 2 ГБ)
+- **Дисковое пространство**: минимум 1 ГБ (при использовании расширений рекомендуется 10 ГБ)
 
-### Real-World Usage Example
+### Пример реального использования
 
-A panel managing 50 servers on x86_64 hardware:
+Панель, управляющая 50 серверами на x86_64-аппаратуре:
 
 ```bash
 CONTAINER ID   NAME                 CPU %     MEM USAGE / LIMIT     MEM %     NET I/O         BLOCK I/O        PIDS
@@ -27,31 +27,31 @@ CONTAINER ID   NAME                 CPU %     MEM USAGE / LIMIT     MEM %     NE
 f5925cc2dd3f   rjns-control_cache   0.09%     3.832MiB / 91.99GiB   0.00%     293MB / 18MB    12.8MB / 332MB   7
 ```
 
-Extension support adds overhead for frontend and backend compilation; these numbers reflect the base panel without any extensions installed.
+Поддержка расширений добавляет накладные расходы на компиляцию фронтенда и бэкенда; эти цифры отражают базовую панель без установленных расширений.
 
-## Technical Overview
+## Технический обзор
 
-The panel is split into a React frontend and a Rust backend.
+Панель разделена на React-фронтенд и Rust-бэкенд.
 
-### Frontend
+### Фронтенд
 
-The frontend is built with React and communicates with the backend via REST APIs.
+Фронтенд построен на React и общается с бэкендом через REST API.
 
-- **Language**: TypeScript
-- **Framework**: [React.js](https://reactjs.org/)
-- **State Management**: [Zustand](https://zustand.docs.pmnd.rs/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Linting**: [Biome](https://biomejs.dev/)
+- **Язык**: TypeScript
+- **Фреймворк**: [React.js](https://reactjs.org/)
+- **Управление состоянием**: [Zustand](https://zustand.docs.pmnd.rs/)
+- **Стилизация**: [Tailwind CSS](https://tailwindcss.com/)
+- **Сборка**: [Vite](https://vitejs.dev/)
+- **Линтер**: [Biome](https://biomejs.dev/)
 
-### Backend
+### Бэкенд
 
-The backend is written in Rust and handles user management, server orchestration, and database interactions.
+Бэкенд написан на Rust и отвечает за управление пользователями, оркестрацию серверов и работу с базой данных.
 
-- **Language**: :crab: Rust
-- **Web Framework**: [`axum`](https://crates.io/crates/axum)
-- **Database**: PostgreSQL via [`sqlx`](https://crates.io/crates/sqlx)
-- **Caching**: Redis/Valkey via [`rustis`](https://crates.io/crates/rustis)
-- **Runtime**: [`tokio`](https://crates.io/crates/tokio)
+- **Язык**: :crab: Rust
+- **Веб-фреймворк**: [`axum`](https://crates.io/crates/axum)
+- **База данных**: PostgreSQL через [`sqlx`](https://crates.io/crates/sqlx)
+- **Кэширование**: Redis/Valkey через [`rustis`](https://crates.io/crates/rustis)
+- **Среда выполнения**: [`tokio`](https://crates.io/crates/tokio)
 
-Most other functionality is implemented from scratch or via small focused crates to keep the dependency tree lean.
+Большая часть остального функционала реализована с нуля или через небольшие специализированные крейты, чтобы дерево зависимостей оставалось лёгким.

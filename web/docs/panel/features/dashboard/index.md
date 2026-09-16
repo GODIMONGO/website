@@ -1,79 +1,79 @@
 ---
-title: Dashboard
-description: A tour of the Calagopus user dashboard, the part of the Panel every user sees after logging in to manage their account and servers.
+title: Панель управления
+description: Обзор пользовательской панели Calagopus — части панели, которую видит каждый пользователь после входа для управления аккаунтом и серверами.
 ---
 
-# Dashboard
+# Панель управления
 
-The Dashboard is what every user lands on after logging in. It covers your own account (password, email, two-factor, avatar), your servers, and account-level self-service like API keys, SSH keys, and security keys. It's separate from the **Admin** area, which is only visible to users with admin permissions and covers instance-wide management like nodes, locations, and other users.
+Панель управления — это то, куда попадает каждый пользователь после входа. Она охватывает ваш аккаунт (пароль, email, двухфакторную аутентификацию, аватар), ваши серверы и самостоятельные функции уровня аккаунта, такие как API-ключи, SSH-ключи и ключи безопасности. Она отделена от области **Администрирование**, которая видна только пользователям с правами администратора и охватывает управление всем экземпляром: узлы, локации и других пользователей.
 
-| Page | Description |
+| Страница | Описание |
 | --- | --- |
-| [Servers](./servers.md) | Your server list, server groups, and bulk power actions |
-| [Account](./account.md) | Password, email, two-factor authentication, and avatar |
-| [Security Keys](./security-keys.md) | Passkeys and hardware security keys for login |
-| [API Keys](./api-keys.md) | Personal access tokens for the API, with granular permissions |
-| [SSH Keys](./ssh-keys.md) | Public keys used for SFTP and SSH access to Wings |
-| [Command Snippets](./command-snippets.md) | Shortcuts for commands you use often in the server console |
-| [OAuth Links](./oauth-links.md) | Linking third-party accounts for faster login |
-| [Sessions](./sessions.md) | Devices currently logged into your account |
-| [Keyboard Shortcuts](./keyboard-shortcuts.md) | Rebindable shortcuts for navigating the panel |
-| [Activity](./activity.md) | A log of everything that's happened on your account |
+| [Серверы](./servers.md) | Список серверов, группы серверов и массовое управление питанием |
+| [Аккаунт](./account.md) | Пароль, email, двухфакторная аутентификация и аватар |
+| [Ключи безопасности](./security-keys.md) | Passkeys и аппаратные ключи безопасности для входа |
+| [API-ключи](./api-keys.md) | Персональные токены доступа для API с детальными разрешениями |
+| [SSH-ключи](./ssh-keys.md) | Публичные ключи для доступа SFTP и SSH к Wings |
+| [Сниппеты команд](./command-snippets.md) | Ярлыки для часто используемых команд в консоли сервера |
+| [OAuth-подключения](./oauth-links.md) | Привязка сторонних аккаунтов для быстрого входа |
+| [Сессии](./sessions.md) | Устройства, на которых выполнен вход в ваш аккаунт |
+| [Горячие клавиши](./keyboard-shortcuts.md) | Переназначаемые горячие клавиши для навигации по панели |
+| [Активность](./activity.md) | Журнал всего, что происходило с вашим аккаунтом |
 
-## Navigating the Dashboard
+## Навигация по панели управления
 
-The sidebar lists every page above, plus **Servers** and **Admin** (if you have admin permissions) at the top, under the **Quick actions** trigger (see below). At the bottom sits a server switcher: click into it to search and jump straight to one of your servers. The profile box below it leads to your [Account page](./account.md).
+Боковая панель перечисляет все страницы выше, а также **Серверы** и **Администрирование** (если у вас есть права администратора) сверху, под триггером **Быстрые действия** (см. ниже). Внизу — переключатель серверов: щёлкните в нём, чтобы найти и сразу перейти к одному из ваших серверов. Поле профиля под ним ведёт на вашу [страницу аккаунта](./account.md).
 
-Right-clicking any sidebar link offers two more ways to open it: **Open in Virtual Window** renders the page in a floating window inside the panel, so you can keep it next to whatever you're doing, and **Open in Popup** opens it in a separate browser window.
+Правый клик по любой ссылке в боковой панели предлагает два дополнительных способа открыть её: **Открыть в виртуальном окне** открывает страницу в плавающем окне внутри панели, чтобы держать её рядом с тем, чем вы заняты, а **Открыть во всплывающем окне** — в отдельном окне браузера.
 
 <img src="./images/index/nav-search.webp" width="200" alt="" />
 
-## Quick Actions
+## Быстрые действия
 
-**Quick actions...** at the top of the sidebar, or `Ctrl+Space` anywhere (rebindable under [Keyboard Shortcuts](./keyboard-shortcuts.md), and it works even while typing in an input), opens a command palette: type to filter actions and pages by any part of their name, use the arrow keys to navigate, **Enter** to select, **Esc** to close.
+**Быстрые действия...** вверху боковой панели или `Ctrl+Space` в любом месте (переназначается в [Горячих клавишах](./keyboard-shortcuts.md), работает даже при вводе текста в поле) открывает палитру команд: вводите для фильтрации действий и страниц по любой части имени, стрелки для навигации, **Enter** для выбора, **Esc** для закрытия.
 
-<img src="./images/index/quick-actions.webp" width="200" alt="Quick actions trigger" />
+<img src="./images/index/quick-actions.webp" width="200" alt="Триггер быстрых действий" />
 
-What it offers follows where you are:
+Что предлагается, зависит от того, где вы находитесь:
 
-- On the dashboard: your servers, to jump straight into one, plus every dashboard page.
-- Inside a server: the server's pages plus **Power** actions matching its state and your permissions (**Start** while offline, **Stop** and **Restart** while running, **Kill** while stopping).
-- In the admin area: **Back**, **Home**, and every admin page.
+- На панели управления: ваши серверы, чтобы сразу перейти к одному из них, плюс каждая страница панели.
+- Внутри сервера: страницы сервера плюс действия **Питание**, соответствующие его состоянию и вашим разрешениям (**Запустить** при выключенном, **Остановить** и **Перезапустить** при работающем, **Убить** при остановке).
+- В области администрирования: **Назад**, **Главная** и каждая страница администрирования.
 
-Whatever page you are on, its own tabs are listed too, under **Page Navigation** - the tabs of a node, an egg or your backups, without reaching for them.
+На какой бы странице вы ни находились, её собственные вкладки тоже перечислены под **Навигация по странице** — вкладки узла, эгга или ваших резервных копий, не тянуться к ним.
 
-<img src="./images/index/quick-actions-modal.webp" width="310" alt="Quick actions palette" />
+<img src="./images/index/quick-actions-modal.webp" width="310" alt="Палитра быстрых действий" />
 
-A **Logout** action is available everywhere, under **Account**; it asks for confirmation before ending your session.
+Действие **Выйти** доступно везде, под **Аккаунт**; оно запрашивает подтверждение перед завершением сессии.
 
-### Prefixes
+### Префиксы
 
-Typing one of four characters first switches the palette into a different mode. The palette shows these as hints along its footer, so you don't have to remember them.
+Ввод одного из четырёх символов первым переключает палитру в другой режим. Палитра показывает их как подсказки вдоль нижнего края, поэтому запоминать не обязательно.
 
-| Prefix | Mode |
+| Префикс | Режим |
 | --- | --- |
-| `=` | Evaluate a math expression, with the result shown as you type. **Enter** copies it. |
-| `#` | Search servers by name. In the admin area this searches every server on the panel, not just yours. |
-| `@` | Search users. Admin area only, and only with user permissions. |
-| `/` | Filter to pages only, showing each one's path. |
+| `=` | Вычислить математическое выражение, результат отображается по мере ввода. **Enter** копирует его. |
+| `#` | Поиск серверов по имени. В области администрирования ищет по всем серверам панели, а не только вашим. |
+| `@` | Поиск пользователей. Только в области администрирования и только с правами на пользователей. |
+| `/` | Фильтр только по страницам, с указанием пути каждой. |
 
-The three dots next to your name open a small menu to jump to your **Account** page, switch to the **Admin** area (admins only), pick a **Theme**, reset your device overrides (see [Settings Sync](#settings-sync); the entry only appears when you have some), or log out. **Auto** follows your browser's theme, **Dark** and **Light** force one; the panel starts on **Dark** until you pick.
+Три точки рядом с вашим именем открывают небольшое меню, чтобы перейти на страницу **Аккаунт**, переключиться в область **Администрирование** (только администраторы), выбрать **Тему**, сбросить переопределения устройства (см. [Синхронизацию настроек](#синхронизация-настроек); пункт появляется только при их наличии) или выйти. **Авто** следует теме браузера, **Тёмная** и **Светлая** принудительно задают её; панель стартует в **Тёмной**, пока вы не выберете.
 
 <img src="./images/index/nav-menu.webp" width="200" alt="" />
 
-## Settings Sync
+## Синхронизация настроек
 
-Most preferences follow your account rather than your browser: change the console font size or your toast position on one machine and it is already set on the next one you log into. This covers the [Preferences](./account.md#preferences) card, console and file-manager settings, the form-engine **Advanced mode** toggle, and your [keyboard shortcut](./keyboard-shortcuts.md) rebinds.
+Большинство предпочтений следуют за вашим аккаунтом, а не за браузером: измените размер шрифта консоли или положение тостов на одной машине, и на следующей, куда вы войдёте, оно уже будет задано. Это охватывает карточку [Предпочтения](./account.md#предпочтения), настройки консоли и файлового менеджера, переключатель **Расширенный режим** движка форм и переназначения [горячих клавиш](./keyboard-shortcuts.md).
 
-Every synced setting has a small icon next to its label that opens a scope menu:
+У каждой синхронизируемой настройки рядом с меткой есть небольшая иконка, открывающая меню области:
 
-| Option | What it does |
+| Опция | Что делает |
 | --- | --- |
-| **Sync With Account** | The default. The value lives on your account and applies everywhere. |
-| **Only This Device** | Breaks the link and keeps a separate value on this device. The label then reads **This Device**. |
-| **Use the Account Value** | Drops the device override and goes back to the account's value. |
-| **Save This Value to My Account** | Pushes the current device value up as the new account value. |
+| **Синхронизировать с аккаунтом** | По умолчанию. Значение хранится на аккаунте и применяется везде. |
+| **Только это устройство** | Разрывает связь и хранит отдельное значение на этом устройстве. Метка меняется на **Это устройство**. |
+| **Использовать значение аккаунта** | Сбрасывает переопределение устройства и возвращается к значению аккаунта. |
+| **Сохранить это значение в аккаунт** | Отправляет текущее значение устройства как новое значение аккаунта. |
 
-A few settings are inherently per-device and never sync: the editor engine, line-overflow wrapping, the VS Code URI scheme, and the audio player's volume.
+Несколько настроек по природе привязаны к устройству и не синхронизируются: движок редактора, перенос длинных строк, схема URI VS Code и громкость аудиоплеера.
 
-When you have any overrides, the profile menu at the bottom of the sidebar grows a **Reset Device Overrides** entry with a count, which clears them all at once and returns this device to your account's values.
+Когда есть переопределения, меню профиля внизу боковой панели дополняется пунктом **Сбросить переопределения устройства** со счётчиком, который сбрасывает их разом и возвращает это устройство к значениям аккаунта.

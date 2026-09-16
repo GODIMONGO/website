@@ -1,14 +1,14 @@
 ---
-title: Sponsors
-description: The people and companies funding Calagopus development through GitHub Sponsors.
+title: Спонсоры
+description: Люди и компании, финансирующие разработку Calagopus через GitHub Sponsors.
 lastUpdated: false
 ---
 
-# Sponsors
+# Спонсоры
 
-Calagopus is free and open source, and its development is funded by the community through
-[GitHub Sponsors](https://github.com/sponsors/calagopus). This page thanks everyone who
-contributes or has contributed.
+Calagopus бесплатен и имеет открытый исходный код, а его разработка финансируется сообществом через
+[GitHub Sponsors](https://github.com/sponsors/calagopus). Эта страница благодарит всех, кто
+вносит вклад или вносил его.
 
 <script setup>
 import SponsorList from '../../../.vitepress/components/SponsorList.vue'

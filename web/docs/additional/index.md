@@ -1,18 +1,18 @@
 ---
-description: "Optional Calagopus setup guides: self-service database hosts, panel migrations, SSL certificates, reverse proxies, OAuth login, and troubleshooting."
+description: "Необязательные руководства по Calagopus: хосты баз данных для самостоятельной настройки, миграции панели, SSL-сертификаты, обратные прокси, вход через OAuth и устранение неполадок."
 prev: false
 next: true
 ---
 
-# Additional Configuration
+# Дополнительная настройка
 
-A collection of optional setup guides that aren't required to get the panel running, but cover common things you'll likely want once it is: enabling self-service databases, moving between deployments, securing traffic, and setting up third-party login.
+Подборка необязательных руководств, которые не обязательны для запуска панели, но описывают типичные задачи, которые вам, скорее всего, понадобятся после запуска: включение самостоятельного предоставления баз данных, перемещение между развёртываниями, защита трафика и настройка входа через сторонних провайдеров.
 
-| Page | Description |
+| Страница | Описание |
 | --- | --- |
-| [Database Hosts](./database-hosts/index.md) | Let users provision their own databases for game servers |
-| [Migrations](./migrations/index.md) | Moving from another panel, or changing how your Calagopus install is deployed |
-| [SSL Certificates](./ssl-certificates.md) | Get a free Let's Encrypt certificate, keep it renewing, and wire it into Wings on bare metal or in Docker |
-| [Reverse Proxies](./reverse-proxies.md) | Put Nginx, Apache, Caddy, Traefik or Nginx Proxy Manager in front of the Panel and Wings |
-| [Setting up OAuth](./setting-up-oauth/index.md) | Let users sign in with GitHub, Google, Discord, or any OIDC provider |
-| [Troubleshooting](./troubleshooting.md) | The problems people bring to support most often, and the fixes that worked |
+| [Хосты баз данных](./database-hosts/index.md) | Позвольте пользователям самостоятельно создавать базы данных для игровых серверов |
+| [Миграции](./migrations/index.md) | Переход с другой панели или изменение способа развёртывания Calagopus |
+| [SSL-сертификаты](./ssl-certificates.md) | Получите бесплатный сертификат Let's Encrypt, обеспечьте его обновление и подключите к Wings на «железе» или в Docker |
+| [Обратные прокси](./reverse-proxies.md) | Поставьте Nginx, Apache, Caddy, Traefik или Nginx Proxy Manager перед панелью и Wings |
+| [Настройка OAuth](./setting-up-oauth/index.md) | Позвольте пользователям входить через GitHub, Google, Discord или любого OIDC-провайдера |
+| [Устранение неполадок](./troubleshooting.md) | Частые проблемы, с которыми обращаются в поддержку, и решения, которые помогли |

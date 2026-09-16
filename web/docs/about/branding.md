@@ -1,41 +1,41 @@
 ---
 prev: true
 next: false
-description: Official Calagopus logos, icons and banners as SVG downloads, for referencing the project in your own materials.
+description: Официальные логотипы, иконки и баннеры Calagopus в формате SVG для упоминания проекта в ваших материалах.
 ---
-# Branding
+# Брендинг
 
-## Images
+## Изображения
 
-### Logos
-
-|     |     |
-| --- | --- |
-| ![Calagopus Icon SVG](/logos/icon.svg) | ![Standing Calagopus SVG](/logos/standing.svg) |
-| ![Sleepy Calagopus SVG](/logos/sleepy.svg) | ![Sleepy Calagopus with ZZZ SVG](/logos/sleepy-zzz.svg) |
-| ![Stretching Calagopus SVG](/logos/stretching.svg) | ![Facing Calagopus SVG](/logos/facing.svg) |
-
-### Banners
+### Логотипы
 
 |     |     |
 | --- | --- |
-| ![Full Logo SVG](/banners/fulllogo.svg) | ![Full Logo Vertical SVG](/banners/fulllogo-vertical.svg) |
-| ![Simple Full Logo SVG](/banners/simple-fulllogo.svg) | ![Simple Full Logo Vertical SVG](/banners/simple-fulllogo-vertical.svg) |
-| ![Simple Standing Full Logo SVG](/banners/simple-standing-fulllogo.svg) | ![Simple Standing Full Logo Vertical SVG](/banners/simple-standing-fulllogo-vertical.svg) |
-| ![Simple Stretching Full Logo SVG](/banners/simple-stretching-fulllogo.svg) | ![Simple Stretching Full Logo Vertical SVG](/banners/simple-stretching-fulllogo-vertical.svg) |
+| ![Иконка Calagopus SVG](/logos/icon.svg) | ![Стоящий Calagopus SVG](/logos/standing.svg) |
+| ![Сонный Calagopus SVG](/logos/sleepy.svg) | ![Сонный Calagopus с ZZZ SVG](/logos/sleepy-zzz.svg) |
+| ![Тянущийся Calagopus SVG](/logos/stretching.svg) | ![Calagopus анфас SVG](/logos/facing.svg) |
 
-### Badges
+### Баннеры
 
-![Badge Made For Calagopus SVG](/badges/made_for_calagopus.svg)
-![Badge Supports Calagopus SVG](/badges/supports_calagopus.svg)
-![Badge Requires Calagopus SVG](/badges/requires_calagopus_wide.svg)
+|     |     |
+| --- | --- |
+| ![Полный логотип SVG](/banners/fulllogo.svg) | ![Полный вертикальный логотип SVG](/banners/fulllogo-vertical.svg) |
+| ![Простой полный логотип SVG](/banners/simple-fulllogo.svg) | ![Простой полный вертикальный логотип SVG](/banners/simple-fulllogo-vertical.svg) |
+| ![Простой стоящий полный логотип SVG](/banners/simple-standing-fulllogo.svg) | ![Простой стоящий полный вертикальный логотип SVG](/banners/simple-standing-fulllogo-vertical.svg) |
+| ![Простой тянущийся полный логотип SVG](/banners/simple-stretching-fulllogo.svg) | ![Простой тянущийся полный вертикальный логотип SVG](/banners/simple-stretching-fulllogo-vertical.svg) |
 
-## Colors
+### Значки
 
-| Usecase | HEX | Example |
+![Значок Сделано для Calagopus SVG](/badges/made_for_calagopus.svg)
+![Значок Поддерживает Calagopus SVG](/badges/supports_calagopus.svg)
+![Значок Требует Calagopus SVG](/badges/requires_calagopus_wide.svg)
+
+## Цвета
+
+| Назначение | HEX | Пример |
 | --- | --- | --- |
-| Fox White | #ffffff | ![Fox White](./colors/fox_white.svg) |
-| Fox Accent | #b4b4b4 | ![Fox Accent](./colors/fox_accent.svg) |
-| Text Primary | #74c0fc | ![Text Primary](./colors/text_primary.svg) |
-| Background | #222222 | ![Background](./colors/background.svg) |
-| Background Accent | #2e2e2e | ![Background Accent](./colors/background_accent.svg) |
+| Лисий белый | #ffffff | ![Лисий белый](./colors/fox_white.svg) |
+| Лисий акцент | #b4b4b4 | ![Лисий акцент](./colors/fox_accent.svg) |
+| Основной текст | #74c0fc | ![Основной текст](./colors/text_primary.svg) |
+| Фон | #222222 | ![Фон](./colors/background.svg) |
+| Акцент фона | #2e2e2e | ![Акцент фона](./colors/background_accent.svg) |

@@ -1,15 +1,15 @@
 ---
-title: Features
-description: Feature documentation for every part of the Calagopus panel, from login to the admin area.
+title: Функции
+description: Документация по функциям каждой части панели Calagopus — от входа до администрирования.
 ---
 
-# Features
+# Функции
 
-A closer look at what Calagopus can do, organized by area of the panel.
+Подробнее о возможностях Calagopus, сгруппированных по разделам панели.
 
-| Page | Description |
+| Страница | Описание |
 | --- | --- |
-| [Authentication](./auth/index.md) | Logging in, registering, and resetting passwords |
-| [Dashboard](./dashboard/index.md) | The user-facing side of the panel: account, servers, API keys, and more |
-| [Server](./server/index.md) | Everything inside a server: console, files, databases, schedules, backups, and more |
-| [Admin](./admin/index.md) | Instance administration: nodes, servers, users, eggs, databases, and panel settings |
+| [Аутентификация](./auth/index.md) | Вход, регистрация и сброс пароля |
+| [Панель управления](./dashboard/index.md) | Пользовательская сторона панели: аккаунт, серверы, API-ключи и многое другое |
+| [Сервер](./server/index.md) | Всё внутри сервера: консоль, файлы, базы данных, расписания, резервные копии и многое другое |
+| [Администрирование](./admin/index.md) | Администрирование экземпляра: узлы, серверы, пользователи, эгги, базы данных и настройки панели |

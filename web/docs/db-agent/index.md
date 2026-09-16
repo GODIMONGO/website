@@ -1,17 +1,17 @@
 ---
-description: "Install and configure DB Agent, the Calagopus database proxy and provisioning agent: installation methods, configuration, and templates."
+description: "Установка и настройка DB Agent — прокси-сервера баз данных и агента предоставления Calagopus: методы установки, конфигурация и шаблоны."
 prev: false
 next: true
 ---
 
 # DB Agent
 
-DB Agent is a database proxy and provisioning agent. This section covers installing it, configuring it, and keeping it up to date.
+DB Agent — это прокси-сервер баз данных и агент предоставления. В этом разделе описана его установка, настройка и поддержка в актуальном состоянии.
 
-| Page | Description |
+| Страница | Описание |
 | --- | --- |
-| [Overview](./overview.md) | Requirements and technical details of how DB Agent works |
-| [Installation](./installation/index.md) | Get DB Agent running via Docker, package manager, or binary |
-| [Configuration](./configuration.md) | Reference for every option in `config.yml` |
-| [Templates](./templates.md) | Ready-to-fill provisioning presets for each database type |
-| [Updating DB Agent](./updating.md) | Keep DB Agent up to date for your installation method |
+| [Обзор](./overview.md) | Требования и технические подробности работы DB Agent |
+| [Установка](./installation/index.md) | Запуск DB Agent через Docker, менеджер пакетов или бинарный файл |
+| [Конфигурация](./configuration.md) | Справочник по всем параметрам `config.yml` |
+| [Шаблоны](./templates.md) | Готовые пресеты предоставления для каждого типа базы данных |
+| [Обновление DB Agent](./updating.md) | Поддержание DB Agent в актуальном состоянии для вашего метода установки |

@@ -1,14 +1,11 @@
 ---
-title: Releases
-description: Changelogs for Calagopus Panel, Wings and DB Agent releases, newest first.
+title: Релизы
+description: Журналы изменений релизов панели Calagopus, Wings и DB Agent, от новых к старым.
 ---
 
-# Releases
+# Релизы
 
-Release notes for the Calagopus components. Each one is versioned independently, so pick
-the changelog for the component you want to read about. Everything here comes straight
-from the [release API](https://calagopus.com/api/releases), which mirrors the GitHub
-releases of each repository.
+Примечания к релизам компонентов Calagopus. Каждый из них версонируется независимо, поэтому выберите журнал изменений нужного вам компонента. Всё, что здесь представлено, берётся напрямую из [API релизов](https://calagopus.com/api/releases), который зеркалирует GitHub-релизы каждого репозитория.
 
 <script setup>
 import ReleaseIndex from '../../../.vitepress/components/ReleaseIndex.vue'
@@ -16,9 +13,6 @@ import ReleaseIndex from '../../../.vitepress/components/ReleaseIndex.vue'
 
 <ReleaseIndex />
 
-::: tip Keep them in sync
-Panel and Wings releases are frequently paired. When a release note says to update
-one component before the other, follow that order to avoid transient issues. See the
-[Panel](../panel/updating.md), [Wings](../wings/updating.md) and
-[DB Agent](../db-agent/updating.md) updating guides for the mechanics.
+::: tip Держите их синхронизированными
+Релизы панели и Wings часто выходят парами. Если в примечании к релизу сказано обновить один компонент раньше другого, следуйте этому порядку, чтобы избежать временных проблем. Подробности — в руководствах по обновлению [панели](../panel/updating.md), [Wings](../wings/updating.md) и [DB Agent](../db-agent/updating.md).
 :::
