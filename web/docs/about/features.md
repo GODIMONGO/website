@@ -1,79 +1,39 @@
 ---
-title: Feature Reference
-description: A full list of Calagopus features and a side-by-side comparison with Pterodactyl, Pelican, and AMP. See what sets Calagopus apart.
+title: Справочник функций
+description: Полный список функций Calagopus и сравнение бок о бок с Pterodactyl, Pelican и AMP. Узнайте, что отличает Calagopus.
 ---
 
-# Feature Reference
+# Справочник функций
 
-A categorized overview of what Calagopus offers, followed by a comparison with other panels wherever we're confident of the other panel's behavior. Categories with a comparison table are followed by an "Also included" list of further Calagopus-specific capabilities in that area.
+Категоризированный обзор возможностей Calagopus, затем сравнение с другими панелями там, где мы уверены в поведении другой панели. За категориями с таблицей сравнения следует список «Также включено» дополнительных возможностей Calagopus в этой области.
 
-Pterodactyl and Pelican are compared against the current state of their public main branches, which may include features not yet in a tagged release. AMP is closed-source, so cells we cannot verify from source are left blank rather than guessed.
+Pterodactyl и Pelican сравниваются с текущим состоянием их публичных main-веток, которые могут включать функции, ещё не попавшие в тег-релиз. AMP имеет закрытый исходный код, поэтому ячейки, которые мы не можем проверить из исходников, оставлены пустыми, а не угаданными.
 
-## Highlights
+## Основное
 
-- **Fast**: Both the node daemon and panel backend are written in Rust, designed to use as few resources as possible while delivering a responsive experience.
-- **Secure**: Security is a first-class concern in the architecture, with hardening built in by default.
-- **Easy to use**: The panel is designed to be approachable without requiring a background in server administration.
-- **Open Source**: The code is on GitHub and contributions are welcome.
-- **Cross-Platform**: The panel runs on essentially any operating system.
-- **Extensible**: A built-in extension system lets you add custom backend logic, routes, UI elements, and more.
-- **Scalable**: The architecture scales horizontally - add more backend instances, read replicas, and Wings nodes as load grows.
-- **WebAuthn**: Users can authenticate with passkeys, biometrics, or hardware security keys.
-- **Schedule Tasks**: Automate server management with time- and event-based scheduling.
-- **Subuser Management**: Grant other users scoped access to a server without full admin rights.
-- **File Manager**: Browse, upload, download, and edit server files directly from the panel, including archive and backup browsing.
-- **API**: A comprehensive API covers everything the panel UI does. See the [API Reference](https://demo.calagopus.com/api) for details.
+- **Быстро**: И демон узла, и бэкенд панели написаны на Rust и спроектированы использовать минимум ресурсов, обеспечивая отзывчивый опыт.
+- **Безопасно**: Безопасность — забота первого класса в архитектуре, с усилением, встроенным по умолчанию.
+- **Просто в использовании**: Панель спроектирована доступной без бэкграунда в администрировании серверов.
+- **Открытый исходный код**: Код на GitHub, вклад приветствуется.
+- **Кроссплатформенность**: Панель работает практически на любой ОС.
+- **Расширяемость**: Встроенная система расширений позволяет добавлять собственную логику бэкенда, маршруты, элементы UI и многое другое.
+- **Масштабируемость**: Архитектура масштабируется горизонтально — добавляйте больше экземпляров бэкенда, read-реплики и узлы Wings по мере роста нагрузки.
+- **WebAuthn**: Пользователи могут аутентифицироваться с помощью passkeys, биометрии или аппаратных ключей безопасности.
+- **Расписание задач**: Автоматизируйте управление сервером с планированием по времени и событиям.
+- **Управление субпользователями**: Дайте другим пользователям ограниченный доступ к серверу без полных прав администратора.
+- **Файловый менеджер**: Просматривайте, загружайте, скачивайте и редактируйте файлы сервера прямо из панели, включая просмотр архивов и резервных копий.
+- **API**: Комплексный API покрывает всё, что делает UI панели. Подробности — в [справочнике API](https://demo.calagopus.com/api).
 
-## Core & Extensibility
+## Ядро и расширяемость
 
 <FeatureTable id="core" />
 
-## Console & Real-Time Management
+## Консоль и управление в реальном времени
 
 <FeatureTable id="console" />
 
-## File Management
+## Управление файлами
 
 <FeatureTable id="files" />
 
-## Databases
-
-<FeatureTable id="databases" />
-
-## Backups
-
-<FeatureTable id="backups" />
-
-## Scheduling & Automation
-
-<FeatureTable id="scheduling" />
-
-## Networking
-
-<FeatureTable id="networking" />
-
-## Subusers & Roles
-
-<FeatureTable id="subusers-roles" />
-
-## Authentication & Security
-
-<FeatureTable id="auth-security" />
-
-## Account & Onboarding
-
-<FeatureTable id="account-onboarding" />
-
-## Administration
-
-<FeatureTable id="administration" />
-
-## Nodes & Infrastructure
-
-<FeatureTable id="nodes-infrastructure" />
-
-## UI/UX & Internationalization
-
-<FeatureTable id="ui-ux" />
-
-If anything on this page looks inaccurate, let us know on Discord or open an issue on GitHub.
+## Базы данных
