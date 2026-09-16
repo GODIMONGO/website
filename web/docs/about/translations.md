@@ -1,141 +1,141 @@
 ---
-title: Translations
-description: How to contribute Calagopus translations through Crowdin, from joining the project to seeing your language ship in the panel.
+title: Переводы
+description: Как участвовать в переводах Calagopus через Crowdin — от присоединения к проекту до появления вашего языка в панели.
 ---
 
-# Translating Calagopus with Crowdin
+# Перевод Calagopus через Crowdin
 
-This guide explains how to contribute translations using [Crowdin](https://crowdin.com).
+Это руководство объясняет, как вносить переводы через [Crowdin](https://crowdin.com).
 
-## Prerequisites
+## Предварительные требования
 
-You will need:
+Вам понадобятся:
 
-- A Crowdin account
-- Basic understanding of both English and your target language
+- Аккаунт Crowdin
+- Базовое знание английского и целевого языка
 
-## Joining the Project
+## Присоединение к проекту
 
-1. Open the [Calagopus Crowdin project](https://crowdin.com/project/calagopus).
-2. Sign in to Crowdin.
-3. Select the language you want to translate.
-4. Click `en.json`. This indicates the source, not the target language.
+1. Откройте [проект Calagopus в Crowdin](https://crowdin.com/project/calagopus).
+2. Войдите в Crowdin.
+3. Выберите язык, который хотите переводить.
+4. Нажмите `en.json`. Это источник, а не целевой язык.
 
-If your language is not available, open a GitHub issue requesting support for it.
+Если нужного языка нет, откройте issue на GitHub с запросом поддержки.
 
-## Understanding the Translation Interface
+## Интерфейс перевода
 
-Each source string consists of:
+Каждая исходная строка состоит из:
 
-- **Source string** - The original English text.
-- **Translation** - Where you enter your translation.
-- **Suggestions** - Existing translations or machine translation suggestions.
-- **Comments** - Context from developers or other translators.
+- **Исходная строка** — оригинальный английский текст.
+- **Перевод** — куда вы вводите перевод.
+- **Предложения** — существующие переводы или предложения машинного перевода.
+- **Комментарии** — контекст от разработчиков или других переводчиков.
 
-Always read the surrounding context before translating. Automated suggestions may be incorrect; review them before submitting.
+Всегда читайте окружающий контекст перед переводом. Автоматические предложения могут быть неточными — проверяйте их перед отправкой.
 
-![Picture of the Crowdin User Interface](./crowdin-ui.webp)
+![Интерфейс Crowdin](./crowdin-ui.webp)
 
-## Translation Guidelines
+## Рекомендации по переводу
 
-### Keep Meaning, Not Words
+### Сохраняйте смысл, а не слова
 
-Translate the intent of the message rather than performing a literal translation.
+Переводите смысл сообщения, а не делайте буквальный перевод.
 
-### Preserve Variables
+### Сохраняйте переменные
 
-Strings often contain placeholders.
+Строки часто содержат плейсхолдеры.
 
-Example:
+Пример:
 
 ```text
 Welcome back, {username}!
 ```
 
-Translate only the surrounding text.
+Переводите только окружающий текст.
 
-✅ Correct
+✅ Правильно
 
 ```text
 ¡Bienvenido de nuevo, {username}!
 ```
 
-❌ Incorrect
+❌ Неправильно
 
 ```text
 ¡Bienvenido de nuevo, {nombre}!
 ```
 
-Never translate or modify text inside `{}`.
+Никогда не переводите и не изменяйте текст внутри `{}`.
 
-### Preserve Markdown
+### Сохраняйте Markdown
 
-Some strings contain Markdown formatting.
+Некоторые строки содержат форматирование Markdown.
 
-Example:
+Пример:
 
 ```md
 Click **Save** to continue.
 ```
 
-Translate only the visible text.
+Переводите только видимый текст.
 
 ```md
 Haz clic en **Guardar** para continuar.
 ```
 
-Do not remove:
+Не удаляйте:
 
 - `**bold**`
 - `_italic_`
-- Links/URLs
-- Line breaks
+- Ссылки/URL
+- Переносы строк
 
-### Plural Forms
+### Формы множественного числа
 
-Some languages have multiple plural rules. Translate every required plural form.
+В некоторых языках несколько правил множественного числа. Переводите все требуемые формы.
 
-### Consistency
+### Согласованность
 
-Use consistent terminology throughout the project. Avoid using multiple translations for the same technical term.
+Используйте единую терминологию по всему проекту. Избегайте разных переводов одного технического термина.
 
-### Reviewing Existing Translations
+### Проверка существующих переводов
 
-Before translating a string:
+Перед переводом строки:
 
-- Read previous translations.
-- Check translation memory suggestions.
-- Vote on good translations.
-- Improve incorrect ones.
+- Прочитайте предыдущие переводы.
+- Проверьте предложения памяти переводов.
+- Голосуйте за хорошие переводы.
+- Улучшайте ошибочные.
 
-### Proofreading
+### Вычитка
 
-Before saving, verify:
+Перед сохранением проверьте:
 
-- Grammar
-- Spelling
-- Punctuation
-- Variables are unchanged
-- Markdown is preserved
+- Грамматику
+- Орфографию
+- Пунктуацию
+- Что переменные не изменены
+- Что Markdown сохранён
 
-### What Should Not Be Translated
+### Что не нужно переводить
 
-Generally leave these unchanged:
+Обычно оставляйте без изменений:
 
-- Product names (e.g. Calagopus, Docker, GitHub, PostgreSQL)
-- Linux commands
-- Environment variable names
-- File names
-- URLs
+- Названия продуктов (напр. Calagopus, Docker, GitHub, PostgreSQL)
+- Linux-команды
+- Имена переменных окружения
+- Имена файлов
+- URL
 
-### Machine Translation
+### Машинный перевод
 
-Machine translation can be a useful starting point, but every suggestion should be reviewed by a human. Ensure translations sound natural to native speakers.
+Машинный перевод может быть полезным началом, но каждое предложение должен проверить человек. Убедитесь, что переводы звучат естественно для носителей языка.
 
-## Need Help?
+## Нужна помощь?
 
-If you are unsure about a translation:
+Если вы не уверены в переводе:
 
-- Leave a comment on the string in Crowdin.
-- Ask other translators.
-- Open a discussion or issue on GitHub.
+- Оставьте комментарий к строке в Crowdin.
+- Спросите других переводчиков.
+- Откройте обсуждение или issue на GitHub.

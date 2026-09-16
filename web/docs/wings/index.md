@@ -1,19 +1,19 @@
 ---
-description: "Install and run Wings, the Rust node agent that hosts your game servers: installation, configuration, disk limiters, and advanced setups."
+description: "Установка и запуск Wings — Rust-агента на узле, который размещает ваши игровые серверы: установка, конфигурация, ограничители диска и расширенные сценарии."
 prev: false
 next: true
 ---
 
 # Wings
 
-Wings is the node agent that runs your game servers. This section covers installing it, configuring it, and the optional extras like disk limiters and advanced setup.
+Wings — это агент на узле, который запускает ваши игровые серверы. В этом разделе описана его установка, настройка и необязательные дополнения: ограничители диска и расширенные сценарии.
 
-| Page | Description |
+| Страница | Описание |
 | --- | --- |
-| [Overview](./overview.md) | Requirements and technical details of how Wings works |
-| [Installation](./installation/index.md) | Get Wings running via Docker, package manager, or binary |
-| [Configuration](./configuration.md) | Reference for every option in `config.yml` |
-| [Updating Wings](./updating.md) | Keep Wings up to date for your installation method |
-| [Next Steps](./next-steps/index.md) | Set up allocations once Wings is connected to the panel |
-| [Disk Limiters](./disk-limiters/index.md) | Enforce per-server storage quotas using Fusequota, Btrfs, ZFS, or XFS |
-| [Advanced](./advanced/index.md) | Backup configurations, homelab exposure, and running Wings under Podman |
+| [Обзор](./overview.md) | Требования и технические подробности работы Wings |
+| [Установка](./installation/index.md) | Запуск Wings через Docker, менеджер пакетов или бинарный файл |
+| [Конфигурация](./configuration.md) | Справочник по всем параметрам `config.yml` |
+| [Обновление Wings](./updating.md) | Поддержание Wings в актуальном состоянии для вашего метода установки |
+| [Дальнейшие шаги](./next-steps/index.md) | Настройка распределений после подключения Wings к панели |
+| [Ограничители диска](./disk-limiters/index.md) | Применение квот на хранилище для каждого сервера через Fusequota, Btrfs, ZFS или XFS |
+| [Дополнительно](./advanced/index.md) | Конфигурации резервных копий, доступ в домашней лаборатории и запуск Wings под Podman |

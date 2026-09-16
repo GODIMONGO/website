@@ -1,6 +1,6 @@
 ---
-title: Pterodactyl Alternatives Compared (2026) - Pelican, AMP and Calagopus
-description: Pelican, AMP and Calagopus compared as Pterodactyl alternatives in 2026 on licensing, performance, extensions, databases and migration effort, with a verdict.
+title: Сравнение альтернатив Pterodactyl (2026) — Pelican, AMP и Calagopus
+description: Pelican, AMP и Calagopus сравниваются как альтернативы Pterodactyl в 2026 году по лицензированию, производительности, расширениям, базам данных и сложности миграции — с итоговым вердиктом.
 head:
   - - meta
     - name: robots
@@ -9,100 +9,100 @@ sidebar: false
 aside: false
 ---
 
-# Pterodactyl Alternatives Compared (2026)
+# Сравнение альтернатив Pterodactyl (2026)
 
-Pterodactyl has been the default self-hosted game server panel since 2015. Its Docker-per-server model, MIT license and huge egg ecosystem are why most alternatives copy its architecture instead of replacing it. But its PHP panel has no first-party extension system, supports only MySQL, and offers little beyond password and TOTP login, which is why people go looking for something else.
+Pterodactyl остаётся стандартной панелью для самостоятельного хостинга игровых серверов с 2015 года. Её модель «Docker на сервер», лицензия MIT и огромная экосистема эггов — причины, по которым большинство альтернатив копирует её архитектуру, а не заменяет. Но её PHP-панель не имеет собственной системы расширений, поддерживает только MySQL и предлагает немногое сверх пароля и TOTP-логина, поэтому люди ищут что-то другое.
 
-Three projects come up in almost every search for a replacement. **Pelican** is a 2024 fork that keeps Pterodactyl's PHP foundation and modernizes it. **AMP** is a commercial, closed-source panel that predates Pterodactyl and runs games as native processes. **Calagopus** is a from-scratch rewrite in Rust that keeps the egg format and the panel/daemon split. This page compares all four so you can pick based on your situation rather than a feature checklist. Calagopus is our project, so where a competitor is the better choice for a given use, we say so.
+Три проекта появляются почти в каждом поиске замены. **Pelican** — форк 2024 года, сохраняющий PHP-основу Pterodactyl и осовременивающий её. **AMP** — коммерческая панель с закрытым кодом, существующая дольше Pterodactyl и запускающая игры как нативные процессы. **Calagopus** — переписанная с нуля на Rust панель, сохраняющая формат эггов и разделение «панель/демон». Эта страница сравнивает все четыре варианта, чтобы вы могли выбрать исходя из своей ситуации, а не чек-листа функций. Calagopus — наш проект, поэтому там, где конкурент лучше подходит для конкретного случая, мы так и говорим.
 
-## The Short Version
+## Краткая версия
 
-- **Stay on Pterodactyl** if your setup works, you do not need plugins, and you would rather not touch a running system. It is stable and its egg ecosystem is unmatched.
-- **Choose Pelican** if you want to stay on PHP/Laravel, keep your existing server without reinstalling it, and mainly want a first-party plugin system, admin roles and OAuth added to what you already know.
-- **Choose AMP** if you run Windows game servers natively, want deep per-game configuration editors, and are fine paying per instance under a proprietary license.
-- **Choose Calagopus** if panel performance under many concurrent users matters, you want an extension API that can replace built-in UI rather than patch it, you need PostgreSQL, MongoDB or Redis for game servers, or you want SSH, file history and event-driven schedules in the panel.
+- **Оставайтесь на Pterodactyl**, если ваша установка работает, плагины не нужны и вы не хотите трогать работающую систему. Она стабильна, а её экосистема эггов не имеет равных.
+- **Выбирайте Pelican**, если хотите остаться на PHP/Laravel, сохранить существующий сервер без переустановки и в основном хотите получить собственную систему плагинов, роли администраторов и OAuth поверх того, что уже знаете.
+- **Выбирайте AMP**, если запускаете игровые серверы Windows нативно, хотите глубокие редакторы конфигурации для каждой игры и готовы платить за каждый экземпляр по проприетарной лицензии.
+- **Выбирайте Calagopus**, если важна производительность панели при множестве одновременных пользователей, нужен API расширений, способный заменить встроенный UI, а не патчить его, нужны PostgreSQL, MongoDB или Redis для игровых серверов или вы хотите SSH, историю файлов и расписания, управляемые событиями, прямо в панели.
 
-## At a Glance
+## Краткий обзор
 
 |                                  | Pterodactyl                 | Pelican                        | AMP                         | Calagopus                          |
 | -------------------------------- | --------------------------- | ------------------------------ | --------------------------- | ---------------------------------- |
-| **Language**                     | PHP (Laravel) + Go (Wings)  | PHP (Laravel/Filament) + Go    | C# (.NET)                   | Rust (panel and Wings)             |
-| **Origin**                       | Original, 2015              | Pterodactyl fork, 2024         | Original, 2014              | Original rewrite, 2025             |
-| **License**                      | MIT                         | AGPL-3.0                       | Proprietary                 | MIT                                |
-| **Price**                        | Free                        | Free                           | Paid, per instance          | Free                               |
-| **Commercial hosting use**       | Allowed                     | Allowed                        | Enterprise Edition required | Allowed                            |
-| **Server isolation**             | Docker per server           | Docker per server              | Native process (Docker optional) | Docker per server             |
-| **Pterodactyl eggs**             | Native                      | Compatible                     | Not used                    | Compatible                         |
-| **Extension system**             | None (Blueprint, unofficial) | First-party PHP plugins       | Yes                         | Native Rust extension API          |
-| **Panel database**               | MySQL/MariaDB               | MySQL, PostgreSQL, SQLite      | Built in                    | PostgreSQL (read replicas supported) |
-| **Game-server database types**   | MySQL/MariaDB               | MySQL/MariaDB                  | MySQL, PostgreSQL, MongoDB  | MySQL, PostgreSQL, MongoDB, Redis  |
-| **Private server network**       | No                          | No                             | Not compared                | Encrypted node-to-node tunnel      |
-| **Passkeys / OAuth**             | No / No                     | Yes / Yes                      | Yes / Yes (OIDC)            | Yes / Yes (any OAuth2/OIDC)        |
-| **Admin roles / audit log**      | No / No                     | Yes / No                       | Yes / not compared          | Yes / Yes                          |
-| **Windows panel host**           | No                          | No                             | Yes                         | Yes                                |
-| **ARM64**                        | Limited                     | Limited                        | Yes                         | Yes                                |
-| **Importer from Pterodactyl**    | n/a                         | Same PHP stack (see Pelican docs) | No                       | Built-in database importer         |
+| **Язык**                     | PHP (Laravel) + Go (Wings)  | PHP (Laravel/Filament) + Go    | C# (.NET)                   | Rust (панель и Wings)             |
+| **Происхождение**                       | Оригинал, 2015              | Форк Pterodactyl, 2024         | Оригинал, 2014              | Оригинальный рерайт, 2025             |
+| **Лицензия**                      | MIT                         | AGPL-3.0                       | Проприетарная                 | MIT                                |
+| **Цена**                        | Бесплатно                        | Бесплатно                           | Платно, за экземпляр          | Бесплатно                               |
+| **Коммерческий хостинг**       | Разрешён                     | Разрешён                        | Требуется Enterprise Edition | Разрешён                            |
+| **Изоляция серверов**             | Docker на сервер           | Docker на сервер              | Нативный процесс (Docker опционально) | Docker на сервер             |
+| **Эгги Pterodactyl**             | Нативно                      | Совместимо                     | Не используются                    | Совместимо                         |
+| **Система расширений**             | Нет (Blueprint, неофициально) | Собственные PHP-плагины       | Да                         | Нативный Rust API расширений          |
+| **База данных панели**               | MySQL/MariaDB               | MySQL, PostgreSQL, SQLite      | Встроенная                    | PostgreSQL (поддержка read-реплик) |
+| **Типы БД игровых серверов**   | MySQL/MariaDB               | MySQL/MariaDB                  | MySQL, PostgreSQL, MongoDB  | MySQL, PostgreSQL, MongoDB, Redis  |
+| **Частная сеть серверов**       | Нет                          | Нет                             | Не сравнивалось                | Зашифрованный туннель между узлами      |
+| **Passkeys / OAuth**             | Нет / Нет                     | Да / Да                      | Да / Да (OIDC)            | Да / Да (любой OAuth2/OIDC)        |
+| **Роли администраторов / журнал аудита**      | Нет / Нет                     | Да / Нет                       | Да / не сравнивалось          | Да / Да                          |
+| **Хостинг панели на Windows**           | Нет                          | Нет                             | Да                         | Да                                |
+| **ARM64**                        | Ограниченно                     | Ограниченно                        | Да                         | Да                                |
+| **Импорт из Pterodactyl**    | н/д                         | Тот же PHP-стек (см. документацию Pelican) | Нет                       | Встроенный импортёр БД         |
 
-Feature rows come from the [full feature reference](/docs/about/features) and the three detailed comparisons linked below. "Compatible" for eggs means the format is read without modification.
+Строки функций взяты из [полного справочника функций](/docs/about/features) и трёх подробных сравнений, приведённых ниже. «Совместимо» для эггов означает, что формат считывается без изменений.
 
-## Why People Leave Pterodactyl
+## Почему уходят с Pterodactyl
 
-The complaints that drive most searches for an alternative fall into four groups, and each candidate solves a different subset of them.
+Жалобы, из-за которых чаще всего ищут альтернативу, делятся на четыре группы, и каждый кандидат решает разные их подмножества.
 
-**No first-party extension system.** Pterodactyl has no plugin API. Blueprint fills the gap by patching PHP source files during installation, which works until a panel update changes the files it patched. Pelican and Calagopus both ship a real extension system; AMP has one too, though it is a different kind of product.
+**Нет собственной системы расширений.** У Pterodactyl нет API плагинов. Blueprint заполняет пробел, патча исходные PHP-файлы во время установки — это работает, пока обновление панели не меняет пропатченные файлы. Pelican и Calagopus поставляют настоящую систему расширений; у AMP она тоже есть, хотя это продукт иного рода.
 
-**Panel performance.** The panel is an interpreted PHP application behind PHP-FPM. That is fine for a homelab, but a hosting provider whose customers all open the file manager at once feels it in CPU and memory. Pelican inherits the same runtime. Calagopus's Rust backend is the only one of the three that changes it: the project's [benchmarks](/docs/about/benchmarks) report more than 32,800% higher panel API throughput than Pterodactyl under identical CPU limits. That figure is API throughput under concurrent load, not game tick rate, so weigh it by how many people use your panel at the same time.
+**Производительность панели.** Панель — интерпретируемое PHP-приложение за PHP-FPM. Для домашней лаборатории это нормально, но хостинг-провайдер, у которого все клиенты одновременно открывают файловый менеджер, чувствует это по CPU и памяти. Pelican наследует ту же среду выполнения. Rust-бэкенд Calagopus — единственный из трёх, кто её меняет: [бенчмарки](/docs/about/benchmarks) проекта показывают более чем на 32 800% более высокую пропускную способность API панели по сравнению с Pterodactyl при одинаковых лимитах CPU. Эта цифра — пропускная способность API при параллельной нагрузке, а не игровой tick rate, поэтому оценивайте её с учётом того, сколько людей пользуются панелью одновременно.
 
-**Database and authentication limits.** MySQL only, for the panel and for game servers, and no passkeys or single sign-on. Pelican adds PostgreSQL and SQLite for the panel and OAuth and passkeys for login. Calagopus runs its panel on PostgreSQL, adds passkeys and any OAuth2/OIDC provider, and provisions PostgreSQL, MongoDB and Redis as game-server databases through its [database agent](/docs/db-agent/overview). AMP has had OIDC and WebAuthn for years.
+**Ограничения баз данных и аутентификации.** Только MySQL — для панели и для игровых серверов — без passkeys и единого входа. Pelican добавляет PostgreSQL и SQLite для панели, а также OAuth и passkeys для входа. Calagopus работает с PostgreSQL в панели, добавляет passkeys и любого OAuth2/OIDC-провайдера, а также предоставляет PostgreSQL, MongoDB и Redis как базы данных игровых серверов через свой [агент баз данных](/docs/db-agent/overview). У AMP OIDC и WebAuthn есть уже много лет.
 
-**Administration at scale.** Pterodactyl's admin side has user and permission management but no roles, no audit trail and no impersonation. Pelican adds roles. Calagopus adds roles, a full admin and account audit log, and user impersonation for support.
+**Администрирование в масштабе.** В администраторской части Pterodactyl есть управление пользователями и правами, но нет ролей, журнала аудита и имперсонации. Pelican добавляет роли. Calagopus добавляет роли, полный журнал аудита администратора и аккаунта, а также имперсонацию пользователя для поддержки.
 
-## The Candidates
+## Кандидаты
 
 ### Pelican
 
-Pelican is the lowest-friction move. It started as a fork, so the egg format, Wings and Docker model are the same, and the people who know Pterodactyl already know most of Pelican. The interface was rebuilt with Filament, and the fork added OAuth, passkeys, admin roles, webhooks, a plugin system and a wider choice of panel databases. What did not change is the PHP runtime and the MySQL-only limit for game-server databases. If your problem with Pterodactyl was features rather than performance, Pelican fixes most of it without a rewrite. Note the license changed from MIT to AGPL-3.0, which matters if you modify the panel and offer it as a service.
+Pelican — самый безболезненный переход. Он начался как форк, поэтому формат эггов, Wings и модель Docker те же, и те, кто знает Pterodactyl, уже знают большую часть Pelican. Интерфейс перестроен на Filament, а форк добавил OAuth, passkeys, роли администраторов, вебхуки, систему плагинов и более широкий выбор баз данных панели. Что не изменилось — это среда выполнения PHP и ограничение «только MySQL» для баз данных игровых серверов. Если ваша проблема с Pterodactyl была в функциях, а не в производительности, Pelican решает большую часть без переписывания. Учтите, что лицензия сменилась с MIT на AGPL-3.0 — это важно, если вы модифицируете панель и предоставляете её как услугу.
 
-Read the detailed [Calagopus vs Pelican](/compare/calagopus-vs-pelican) comparison, or the neutral [Pterodactyl vs Pelican](/compare/pterodactyl-vs-pelican) page if you are deciding between those two.
+Читайте подробное сравнение [Calagopus против Pelican](/compare/calagopus-vs-pelican) или нейтральную страницу [Pterodactyl против Pelican](/compare/pterodactyl-vs-pelican), если выбираете между этими двумя.
 
 ### AMP
 
-AMP by CubeCoders is the odd one out. It is closed source, licensed per instance, and runs games as native processes on Windows or Linux rather than in Docker by default. In exchange you get per-game integrations and configuration editors that the egg-based panels cannot match, and it has offered OIDC and WebAuthn for a long time. Personal and community licenses are one-time purchases; reselling hosting needs the Enterprise Edition. There is no importer from Pterodactyl, so a move means recreating servers by hand.
+AMP от CubeCoders — выделяется. Это закрытый исходный код, лицензия за экземпляр, и он запускает игры как нативные процессы на Windows или Linux, а не в Docker по умолчанию. Взамен вы получаете интеграции и редакторы конфигурации для каждой игры, с которыми панели на эггах не сравнятся, а OIDC и WebAuthn у него есть уже давно. Личные и community-лицензии — разовая покупка; для перепродажи хостинга требуется Enterprise Edition. Импорта из Pterodactyl нет, поэтому переход означает ручное пересоздание серверов.
 
-Read the detailed [Calagopus vs AMP](/compare/calagopus-vs-amp) comparison.
+Читайте подробное сравнение [Calagopus против AMP](/compare/calagopus-vs-amp).
 
 ### Calagopus
 
-Calagopus keeps what works about Pterodactyl, the egg format and the panel/Wings split, and rewrites both halves in Rust. The practical differences are a native extension API whose extensions can replace built-in UI instead of patching it, event-driven schedule triggers (crashes, resource thresholds, console output, other schedules), file edit history with diffs, archive and backup browsing, an in-browser SSH shell, eight backup drivers, and role-based admin with an audit log. Two more recent additions are a private network that lets servers on different nodes reach each other over an encrypted node-to-node tunnel, and a database explorer that browses, edits and queries a server's MySQL or PostgreSQL databases from the panel. It also runs the panel on Windows and ARM64. The trade-off is age: the first release was June 2025, so the community and third-party extension catalog are smaller than Pterodactyl's. A built-in importer reads a Pterodactyl or Pelican database directly, so users, servers, nodes and eggs come across without moving server data.
+Calagopus сохраняет работающее в Pterodactyl — формат эггов и разделение «панель/Wings» — и переписывает обе половины на Rust. Практическая разница: нативный API расширений, чьи расширения могут заменить встроенный UI вместо его патчинга; расписания, управляемые событиями (сбои, пороги ресурсов, вывод консоли, другие расписания); история правок файлов с диффами; просмотр архивов и резервных копий; SSH-оболочка в браузере; восемь драйверов резервного копирования; ролевое администрирование с журналом аудита. Два недавних дополнения — частная сеть, позволяющая серверам на разных узлах общаться по зашифрованному туннелю между узлами, и обозреватель баз данных, который просматривает, редактирует и делает запросы к MySQL- или PostgreSQL-базам сервера прямо из панели. Панель также работает на Windows и ARM64. Компромисс — возраст: первый релиз вышел в июне 2025, поэтому сообщество и каталог сторонних расширений меньше, чем у Pterodactyl. Встроенный импортёр читает базу данных Pterodactyl или Pelican напрямую, поэтому пользователи, серверы, узлы и эгги переносятся без перемещения данных серверов.
 
-Read the detailed [Calagopus vs Pterodactyl](/compare/calagopus-vs-pterodactyl) comparison.
+Читайте подробное сравнение [Calagopus против Pterodactyl](/compare/calagopus-vs-pterodactyl).
 
-## How to Decide
+## Как решить
 
-| Your situation                                                | Best fit                    | Why                                                                                          |
+| Ваша ситуация                                                | Лучший выбор                    | Почему                                                                                          |
 | ------------------------------------------------------------- | --------------------------- | -------------------------------------------------------------------------------------------- |
-| Homelab, a few servers, Pterodactyl works                     | Stay, or Pelican            | Nothing to gain from a migration; Pelican if you want plugins and OAuth on the same stack     |
-| Community with many subusers and schedules                    | Calagopus                   | Event-driven triggers, role management, file history and collaborative editing               |
-| Hosting business on Linux                                     | Calagopus or Pelican        | Both are free for commercial use; Calagopus if panel load or PostgreSQL/Redis provisioning matters |
-| Windows-native game servers                                   | AMP or Calagopus            | AMP runs games as native Windows processes; Calagopus runs the panel on Windows but servers in Docker |
-| You rely on Blueprint extensions                              | Pelican or Calagopus        | Neither runs Blueprint; both offer a supported extension API to rebuild against              |
-| You need commercial support with an SLA                       | AMP                         | The open-source panels are community supported                                               |
+| Домашняя лаборатория, несколько серверов, Pterodactyl работает                     | Оставайтесь, или Pelican            | От миграции мало выгоды; Pelican, если нужны плагины и OAuth на том же стеке     |
+| Сообщество с множеством субпользователей и расписаний                    | Calagopus                   | Триггеры по событиям, ролевое управление, история файлов и совместное редактирование               |
+| Хостинг-бизнес на Linux                                     | Calagopus или Pelican        | Оба бесплатны для коммерческого использования; Calagopus, если важна нагрузка панели или предоставление PostgreSQL/Redis |
+| Игровые серверы Windows нативно                                   | AMP или Calagopus            | AMP запускает игры как нативные процессы Windows; Calagopus работает на Windows, но серверы в Docker |
+| Вы зависите от расширений Blueprint                              | Pelican или Calagopus        | Ни один не запускает Blueprint; оба предлагают поддерживаемый API расширений для переноса              |
+| Нужна коммерческая поддержка с SLA                       | AMP                         | Панели с открытым исходным кодом поддерживаются сообществом                                               |
 
-## Migration Effort
+## Трудозатраты миграции
 
-| From Pterodactyl to | What moves                                              | What you redo                                    |
+| Из Pterodactyl в | Что переносится                                              | Что делаете заново                                    |
 | ------------------- | ------------------------------------------------------- | ------------------------------------------------ |
-| Pelican             | Same PHP stack; check Pelican's docs for the in-place path | Blueprint extensions, some config              |
-| AMP                 | Nothing automatically                                    | Every server, by hand                            |
-| Calagopus           | Users, servers, nodes, eggs via the built-in importer    | API keys, Wings on each node, Blueprint extensions |
+| Pelican             | Тот же PHP-стек; проверьте документацию Pelican по пути на месте | Расширения Blueprint, часть конфигурации              |
+| AMP                 | Ничего автоматически                                    | Каждый сервер, вручную                            |
+| Calagopus           | Пользователи, серверы, узлы, эгги через встроенный импортёр    | API-ключи, Wings на каждом узле, расширения Blueprint |
 
-The Calagopus importer is documented step by step for [Pterodactyl](/docs/additional/migrations/pterodactyl) and [Pelican](/docs/additional/migrations/pelican), including Docker and standalone installs, and you can run both panels side by side while you move nodes one at a time.
+Импортёр Calagopus описан пошагово для [Pterodactyl](/docs/additional/migrations/pterodactyl) и [Pelican](/docs/additional/migrations/pelican), включая Docker- и автономные установки, и вы можете запустить обе панели параллельно, перенося узлы по одному.
 
-## Next Steps
+## Дальнейшие шаги
 
-- [Calagopus vs Pterodactyl](/compare/calagopus-vs-pterodactyl)
-- [Calagopus vs Pelican](/compare/calagopus-vs-pelican)
-- [Calagopus vs AMP](/compare/calagopus-vs-amp)
-- [Pterodactyl vs Pelican](/compare/pterodactyl-vs-pelican)
-- [Benchmarks and methodology](/docs/about/benchmarks)
-- [Install Calagopus](/docs/panel/installation/)
+- [Calagopus против Pterodactyl](/compare/calagopus-vs-pterodactyl)
+- [Calagopus против Pelican](/compare/calagopus-vs-pelican)
+- [Calagopus против AMP](/compare/calagopus-vs-amp)
+- [Pterodactyl против Pelican](/compare/pterodactyl-vs-pelican)
+- [Бенчмарки и методология](/docs/about/benchmarks)
+- [Установить Calagopus](/docs/panel/installation/)

@@ -1,19 +1,19 @@
 ---
 layout: home
-title: Calagopus - Open-Source Game Server Management Panel
+title: Calagopus — Панель управления игровыми серверами с открытым исходным кодом
 titleTemplate: false
-description: Calagopus is a modern, open-source game server management panel built in Rust. Deploy, monitor, and manage Minecraft, Rust, and other game servers with industry-leading performance.
+description: Calagopus — это современная панель управления игровыми серверами с открытым исходным кодом, написанная на Rust. Развёртывание, мониторинг и управление серверами Minecraft, Rust и других игр с производительностью, задающей стандарты в отрасли.
 
 hero:
   name: Calagopus
-  text: Modern. Fast. Secure.
-  tagline: An open-source game server management panel built in Rust - with throughput up to 32,800% faster than the alternatives.
+  text: Современная. Быстрая. Безопасная.
+  tagline: Панель управления игровыми серверами с открытым исходным кодом, написанная на Rust — с пропускной способностью до 32 800% выше, чем у альтернатив.
   actions:
     - theme: brand
-      text: Get Started
+      text: Начать
       link: /docs
     - theme: alt
-      text: Live Demo
+      text: Демо
       link: https://demo.calagopus.com
     - theme: alt
       text: Discord
@@ -36,7 +36,7 @@ import mobilePreviewSrcset from './mobile-preview.webp?w=360;500;720;1000&as=src
     :srcset="browserPreviewSrcset"
     sizes="(min-width: 768px) 65vw, 100vw"
     src="./browser-preview.webp"
-    alt="Calagopus admin panel showing the server management dashboard with two Minecraft servers"
+    alt="Админ-панель Calagopus: панель управления серверами с двумя серверами Minecraft"
     class="browser-preview"
     loading="eager"
     fetchpriority="high"
@@ -47,7 +47,7 @@ import mobilePreviewSrcset from './mobile-preview.webp?w=360;500;720;1000&as=src
     :srcset="mobilePreviewSrcset"
     sizes="(min-width: 768px) 35vw, min(100vw, 500px)"
     src="./mobile-preview.webp"
-    alt="Calagopus mobile interface showing a live server console on iPhone"
+    alt="Мобильный интерфейс Calagopus: живая консоль сервера на iPhone"
     class="mobile-preview"
     loading="lazy"
     width="500"
@@ -58,35 +58,35 @@ import mobilePreviewSrcset from './mobile-preview.webp?w=360;500;720;1000&as=src
 <Features />
 
 <section class="switch-wrapper" aria-labelledby="switch-heading">
-  <h2 id="switch-heading" class="section-heading">Switching from another panel?</h2>
+  <h2 id="switch-heading" class="section-heading">Переходите с другой панели?</h2>
   <p class="switch-intro">
-    Calagopus manages anything that runs in a Linux Docker container - Minecraft (Java and Bedrock), Rust,
-    ARK, Valheim, FiveM, and more. Pterodactyl eggs work without modification, and migration tooling is
-    built in. See how it stacks up against the panel you run today:
+    Calagopus управляет всем, что запускается в Linux-контейнере Docker — Minecraft (Java и Bedrock), Rust,
+    ARK, Valheim, FiveM и другими. Эгги Pterodactyl работают без изменений, а инструменты миграции
+    встроены. Посмотрите, как панель выглядит на фоне той, которую вы используете сейчас:
   </p>
   <div class="switch-grid">
     <a class="switch-card" href="/compare/calagopus-vs-pterodactyl">
-      <strong>Calagopus vs Pterodactyl</strong>
-      <span>Side-by-side comparison and a node-by-node migration path.</span>
+      <strong>Calagopus против Pterodactyl</strong>
+      <span>Сравнение бок о бок и путь миграции узел за узлом.</span>
     </a>
     <a class="switch-card" href="/compare/calagopus-vs-pelican">
-      <strong>Calagopus vs Pelican</strong>
-      <span>How the two Pterodactyl successors differ.</span>
+      <strong>Calagopus против Pelican</strong>
+      <span>Чем два преемника Pterodactyl отличаются друг от друга.</span>
     </a>
     <a class="switch-card" href="/compare/calagopus-vs-amp">
-      <strong>Calagopus vs AMP</strong>
-      <span>Open-source panel vs the licensed alternative.</span>
+      <strong>Calagopus против AMP</strong>
+      <span>Панель с открытым исходным кодом против лицензионной альтернативы.</span>
     </a>
   </div>
   <p class="switch-more">
-    <a href="/compare/">All Pterodactyl alternatives compared</a> ·
-    <a href="/docs/additional/migrations/pterodactyl">Pterodactyl migration guide</a> ·
-    <a href="/docs/additional/migrations/pelican">Pelican migration guide</a>
+    <a href="/compare/">Сравнение всех альтернатив Pterodactyl</a> ·
+    <a href="/docs/additional/migrations/pterodactyl">Руководство по миграции с Pterodactyl</a> ·
+    <a href="/docs/additional/migrations/pelican">Руководство по миграции с Pelican</a>
   </p>
 </section>
 
 <section class="faq-wrapper" aria-labelledby="faq-heading">
-  <h2 id="faq-heading" class="section-heading">Frequently Asked Questions</h2>
+  <h2 id="faq-heading" class="section-heading">Часто задаваемые вопросы</h2>
   <div class="faq-list">
     <details v-for="(faq, i) in faqs" :key="i" class="faq-item">
       <summary class="faq-question">{{ faq.q }}</summary>
@@ -94,7 +94,7 @@ import mobilePreviewSrcset from './mobile-preview.webp?w=360;500;720;1000&as=src
     </details>
   </div>
   <p class="faq-more">
-    <a href="/docs/about/what-is-calagopus">See more questions →</a>
+    <a href="/docs/about/what-is-calagopus">Ещё вопросы →</a>
   </p>
 </section>
 

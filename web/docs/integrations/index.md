@@ -1,16 +1,16 @@
 ---
-description: "Connect Calagopus with billing platforms and developer tools: VS Code, Paymenter, WHMCS, and Blesta integration guides."
+description: "Подключение Calagopus к биллинговым платформам и инструментам разработчика: руководства по интеграции с VS Code, Paymenter, WHMCS и Blesta."
 prev: false
 next: true
 ---
 
-# Integrations
+# Интеграции
 
-Calagopus integrates with third-party billing platforms and developer tools. Pick whichever applies to you:
+Calagopus интегрируется со сторонними биллинговыми платформами и инструментами разработчика. Выберите подходящее вам:
 
-| Page | Description |
+| Страница | Описание |
 | --- | --- |
-| [VS Code](./vscode.md) | Edit server files and manage your panel directly from your editor |
-| [Paymenter](./paymenter.md) | Automate server provisioning through Paymenter |
-| [WHMCS](./whmcs.md) | Automate server provisioning through WHMCS |
-| [Blesta](./blesta.md) | Automate server provisioning through Blesta |
+| [VS Code](./vscode.md) | Редактируйте файлы сервера и управляйте панелью прямо из редактора |
+| [Paymenter](./paymenter.md) | Автоматизируйте предоставление серверов через Paymenter |
+| [WHMCS](./whmcs.md) | Автоматизируйте предоставление серверов через WHMCS |
+| [Blesta](./blesta.md) | Автоматизируйте предоставление серверов через Blesta |

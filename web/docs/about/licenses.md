@@ -1,41 +1,41 @@
 ---
-title: Licenses
-description: License information for every Calagopus component. Everything is MIT licensed unless stated otherwise.
+title: Лицензии
+description: Информация о лицензиях для каждого компонента Calagopus. Всё лицензировано под MIT, если не указано иное.
 ---
 
-# Licenses
+# Лицензии
 
-Calagopus is open source. Unless a component states otherwise below, it is
-licensed under the **MIT License** (`Copyright (c) Calagopus`).
+Calagopus — проект с открытым исходным кодом. Если для компонента ниже не указано иное, он
+лицензирован под **лицензией MIT** (`Copyright (c) Calagopus`).
 
-## Repositories
+## Репозитории
 
-| Repository | License | Notes |
+| Репозиторий | Лицензия | Примечания |
 | --- | --- | --- |
-| [`calagopus/panel`](https://github.com/calagopus/panel) | MIT | Core panel (backend, frontend, shared). |
-| [`calagopus/wings`](https://github.com/calagopus/wings) | MIT | Node daemon. |
-| [`calagopus/website`](https://github.com/calagopus/website) | MIT | Docs and marketing site. |
-| [`calagopus/bot`](https://github.com/calagopus/bot) | MIT | Discord Bot integration. |
-| [`calagopus/fusequota`](https://github.com/calagopus/fusequota) | GNU GPL-2.0 | FUSE-based quota enforcement for non-native filesystems. |
-| [`calagopus/branding`](https://github.com/calagopus/branding) | Creative Commons Zero v1.0 Universal | Branding assets (logos, icons, etc.). |
-| [`calagopus/whmcs-module`](https://github.com/calagopus/whmcs-module) | MIT | WHMCS integration module. |
-| [`calagopus/paymenter-module`](https://github.com/calagopus/paymenter-module) | MIT | Paymenter integration module. |
-| [`calagopus/blesta-module`](https://github.com/calagopus/blesta-module) | MIT | Blesta integration module. |
-| [`calagopus/vscode-extension`](https://github.com/calagopus/vscode-extension) | MIT | VSCode extension for Calagopus. |
+| [`calagopus/panel`](https://github.com/calagopus/panel) | MIT | Основная панель (бэкенд, фронтенд, общий код). |
+| [`calagopus/wings`](https://github.com/calagopus/wings) | MIT | Демон на узле. |
+| [`calagopus/website`](https://github.com/calagopus/website) | MIT | Сайт документации и маркетинга. |
+| [`calagopus/bot`](https://github.com/calagopus/bot) | MIT | Интеграция с Discord-ботом. |
+| [`calagopus/fusequota`](https://github.com/calagopus/fusequota) | GNU GPL-2.0 | Применение квот на основе FUSE для ненативных файловых систем. |
+| [`calagopus/branding`](https://github.com/calagopus/branding) | Creative Commons Zero v1.0 Universal | Брендовые материалы (логотипы, иконки и т. д.). |
+| [`calagopus/whmcs-module`](https://github.com/calagopus/whmcs-module) | MIT | Модуль интеграции с WHMCS. |
+| [`calagopus/paymenter-module`](https://github.com/calagopus/paymenter-module) | MIT | Модуль интеграции с Paymenter. |
+| [`calagopus/blesta-module`](https://github.com/calagopus/blesta-module) | MIT | Модуль интеграции с Blesta. |
+| [`calagopus/vscode-extension`](https://github.com/calagopus/vscode-extension) | MIT | Расширение VSCode для Calagopus. |
 
-## Bundled and vendored components
+## Включённые и vendored-компоненты
 
-Some repositories vendor or wrap third-party code whose license differs from the
-project's MIT license. These need to be called out for anyone redistributing
-Calagopus commercially.
+Некоторые репозитории vendoring'ят или оборачивают сторонний код, лицензия которого отличается от
+MIT-лицензии проекта. Их нужно указать для всех, кто распространяет
+Calagopus коммерчески.
 
-| Component | Location | License | Notes |
+| Компонент | Расположение | Лицензия | Примечания |
 | --- | --- | --- | --- |
-| `unrar-rs` (wrapper) | `wings/unrar-rs` | MIT OR Apache-2.0 | The Rust wrapper is permissive. |
-| UnRAR C library | (via `unrar_sys`) | **UnRAR license** | Non-free, restrictive. |
+| `unrar-rs` (обёртка) | `wings/unrar-rs` | MIT OR Apache-2.0 | Rust-обёртка пермиссивная. |
+| UnRAR C library | (через `unrar_sys`) | **Лицензия UnRAR** | Несвободная, ограничительная. |
 
-## Full dependency licenses
+## Полные лицензии зависимостей
 
-The complete transitive dependency license list is available from the SBOM.
+Полный транзитивный список лицензий зависимостей доступен в SBOM.
 
-[See SBOMs here](https://packages.calagopus.com/sbom/).
+[См. SBOM здесь](https://packages.calagopus.com/sbom/).

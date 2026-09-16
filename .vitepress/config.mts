@@ -17,8 +17,11 @@ import { expandReleaseMarkdown } from './plugins/releases.ts';
 import { expandFeaturedSponsorsMarkdown } from './plugins/sponsor-sections.ts';
 import { expandSponsorsMarkdown } from './plugins/sponsors.ts';
 
-const SITE_URL = 'https://calagopus.com';
+const SITE_URL = process.env.SITE_URL ?? 'https://calagopus.com';
 const SRC_DIR = 'web';
+// Base path for the built site. Override via BASE_PATH for deployments served
+// from a subpath (e.g. GitHub Pages at https://<user>.github.io/<repo>/).
+const BASE_PATH = process.env.BASE_PATH ?? '/';
 
 // Config reference pages are generated from their definitions before VitePress
 // reads the source tree, so the rendered page, the raw `.md` and the example
@@ -50,13 +53,14 @@ function buildBreadcrumbMap(sidebar: SidebarNode[]): Map<string, BreadcrumbEntry
       if (node.items) walk(node.items, [...trail, entry]);
     }
   };
-  walk(sidebar, [{ name: 'Documentation', item: `${SITE_URL}/docs` }]);
+  walk(sidebar, [{ name: 'Документация', item: `${SITE_URL}/docs` }]);
   return map;
 }
 
 // https://vitepress.dev/reference/site-config
 export default withMermaid({
   buildConcurrency: 128,
+  base: BASE_PATH,
   srcDir: SRC_DIR,
   cleanUrls: true,
 
@@ -135,11 +139,11 @@ export default withMermaid({
     },
   },
 
-  lang: 'en-US',
+  lang: 'ru-RU',
   lastUpdated: true,
   title: 'Calagopus',
   description:
-    'Calagopus is a modern, open-source game server management panel built in Rust. Deploy, monitor, and manage Minecraft, Hytale, and other game servers with industry-leading performance.',
+    'Calagopus — это современная панель управления игровыми серверами с открытым исходным кодом, написанная на Rust. Развёртывание, мониторинг и управление серверами Minecraft, Hytale и других игр с производительностью, задающей стандарты в отрасли.',
   head: [
     [
       'link',
@@ -224,193 +228,193 @@ export default withMermaid({
     logo: '/icon.svg',
 
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'What is Calagopus?', link: '/docs/about/what-is-calagopus' },
+      { text: 'Главная', link: '/' },
+      { text: 'Что такое Calagopus?', link: '/docs/about/what-is-calagopus' },
       {
-        text: 'Compare',
+        text: 'Сравнение',
         items: [
-          { text: 'Pterodactyl Alternatives Compared', link: '/compare/' },
-          { text: 'Calagopus vs Pterodactyl', link: '/compare/calagopus-vs-pterodactyl' },
-          { text: 'Calagopus vs Pelican', link: '/compare/calagopus-vs-pelican' },
-          { text: 'Calagopus vs AMP', link: '/compare/calagopus-vs-amp' },
-          { text: 'Pterodactyl vs Pelican', link: '/compare/pterodactyl-vs-pelican' },
-          { text: 'Benchmarks', link: '/docs/about/benchmarks' },
-          { text: 'Feature Reference', link: '/docs/about/features' },
+          { text: 'Сравнение альтернатив Pterodactyl', link: '/compare/' },
+          { text: 'Calagopus против Pterodactyl', link: '/compare/calagopus-vs-pterodactyl' },
+          { text: 'Calagopus против Pelican', link: '/compare/calagopus-vs-pelican' },
+          { text: 'Calagopus против AMP', link: '/compare/calagopus-vs-amp' },
+          { text: 'Pterodactyl против Pelican', link: '/compare/pterodactyl-vs-pelican' },
+          { text: 'Бенчмарки', link: '/docs/about/benchmarks' },
+          { text: 'Справочник функций', link: '/docs/about/features' },
         ],
       },
-      { text: 'Releases', link: '/docs/releases/' },
-      { text: 'Blog', link: '/blog/' },
-      { text: 'Documentation', link: '/docs' },
+      { text: 'Релизы', link: '/docs/releases/' },
+      { text: 'Блог', link: '/blog/' },
+      { text: 'Документация', link: '/docs' },
     ],
 
     sidebar: [
       {
-        text: 'About Calagopus',
+        text: 'О Calagopus',
         items: [
-          { text: 'What is Calagopus?', link: '/docs/about/what-is-calagopus' },
-          { text: 'Feature Reference', link: '/docs/about/features' },
-          { text: 'Benchmarks', link: '/docs/about/benchmarks' },
-          { text: 'Security', link: '/docs/about/security' },
-          { text: 'Sponsors', link: '/docs/about/sponsors' },
-          { text: 'Documentation MCP Server', link: '/docs/about/mcp-server' },
+          { text: 'Что такое Calagopus?', link: '/docs/about/what-is-calagopus' },
+          { text: 'Справочник функций', link: '/docs/about/features' },
+          { text: 'Бенчмарки', link: '/docs/about/benchmarks' },
+          { text: 'Безопасность', link: '/docs/about/security' },
+          { text: 'Спонсоры', link: '/docs/about/sponsors' },
+          { text: 'MCP-сервер документации', link: '/docs/about/mcp-server' },
           {
-            text: 'Principles',
+            text: 'Принципы',
             collapsed: true,
             items: [
-              { text: 'Architecture', link: '/docs/about/architecture' },
-              { text: 'Branding', link: '/docs/about/branding' },
-              { text: 'Translations', link: '/docs/about/translations' },
-              { text: 'Licenses', link: '/docs/about/licenses' },
+              { text: 'Архитектура', link: '/docs/about/architecture' },
+              { text: 'Брендинг', link: '/docs/about/branding' },
+              { text: 'Переводы', link: '/docs/about/translations' },
+              { text: 'Лицензии', link: '/docs/about/licenses' },
             ],
           },
           {
             text: 'Blog',
             link: '/blog/',
             collapsed: true,
-            items: [{ text: 'Calagopus 1.2.0 released', link: '/blog/release-1.2.0' }],
+            items: [{ text: 'Вышел Calagopus 1.2.0', link: '/blog/release-1.2.0' }],
           },
         ],
       },
 
       {
-        text: 'Releases',
+        text: 'Релизы',
         link: '/docs/releases/',
         items: [
-          { text: 'Panel', link: '/docs/releases/panel' },
+          { text: 'Панель', link: '/docs/releases/panel' },
           { text: 'Wings', link: '/docs/releases/wings' },
           { text: 'DB Agent', link: '/docs/releases/db-agent' },
         ],
       },
 
       {
-        text: 'Panel',
+        text: 'Панель',
         link: '/docs/panel/',
         items: [
-          { text: 'Overview', link: '/docs/panel/overview' },
-          { text: 'Environment', link: '/docs/panel/environment' },
+          { text: 'Обзор', link: '/docs/panel/overview' },
+          { text: 'Окружение', link: '/docs/panel/environment' },
           {
-            text: 'Features',
+            text: 'Функции',
             link: '/docs/panel/features/',
             collapsed: true,
             items: [
               {
-                text: 'Authentication',
+                text: 'Аутентификация',
                 link: '/docs/panel/features/auth/',
                 collapsed: true,
                 items: [
-                  { text: 'Login', link: '/docs/panel/features/auth/login' },
-                  { text: 'Register', link: '/docs/panel/features/auth/register' },
-                  { text: 'Password Reset', link: '/docs/panel/features/auth/password-reset' },
+                  { text: 'Вход', link: '/docs/panel/features/auth/login' },
+                  { text: 'Регистрация', link: '/docs/panel/features/auth/register' },
+                  { text: 'Сброс пароля', link: '/docs/panel/features/auth/password-reset' },
                 ],
               },
               {
-                text: 'Dashboard',
+                text: 'Панель управления',
                 link: '/docs/panel/features/dashboard/',
                 collapsed: true,
                 items: [
-                  { text: 'Servers', link: '/docs/panel/features/dashboard/servers' },
-                  { text: 'Account', link: '/docs/panel/features/dashboard/account' },
-                  { text: 'Security Keys', link: '/docs/panel/features/dashboard/security-keys' },
+                  { text: 'Серверы', link: '/docs/panel/features/dashboard/servers' },
+                  { text: 'Аккаунт', link: '/docs/panel/features/dashboard/account' },
+                  { text: 'Ключи безопасности', link: '/docs/panel/features/dashboard/security-keys' },
                   {
-                    text: 'API Keys',
+                    text: 'API-ключи',
                     link: '/docs/panel/features/dashboard/api-keys',
                     collapsed: true,
-                    items: [{ text: 'Permissions Reference', link: '/docs/panel/features/dashboard/permissions' }],
+                    items: [{ text: 'Справочник разрешений', link: '/docs/panel/features/dashboard/permissions' }],
                   },
-                  { text: 'SSH Keys', link: '/docs/panel/features/dashboard/ssh-keys' },
-                  { text: 'Command Snippets', link: '/docs/panel/features/dashboard/command-snippets' },
-                  { text: 'OAuth Links', link: '/docs/panel/features/dashboard/oauth-links' },
-                  { text: 'Sessions', link: '/docs/panel/features/dashboard/sessions' },
-                  { text: 'Keyboard Shortcuts', link: '/docs/panel/features/dashboard/keyboard-shortcuts' },
-                  { text: 'Activity', link: '/docs/panel/features/dashboard/activity' },
+                  { text: 'SSH-ключи', link: '/docs/panel/features/dashboard/ssh-keys' },
+                  { text: 'Сниппеты команд', link: '/docs/panel/features/dashboard/command-snippets' },
+                  { text: 'OAuth-подключения', link: '/docs/panel/features/dashboard/oauth-links' },
+                  { text: 'Сессии', link: '/docs/panel/features/dashboard/sessions' },
+                  { text: 'Горячие клавиши', link: '/docs/panel/features/dashboard/keyboard-shortcuts' },
+                  { text: 'Активность', link: '/docs/panel/features/dashboard/activity' },
                 ],
               },
               {
-                text: 'Server',
+                text: 'Сервер',
                 link: '/docs/panel/features/server/',
                 collapsed: true,
                 items: [
-                  { text: 'Console', link: '/docs/panel/features/server/console' },
-                  { text: 'Files', link: '/docs/panel/features/server/files' },
-                  { text: 'Databases', link: '/docs/panel/features/server/databases' },
-                  { text: 'Schedules', link: '/docs/panel/features/server/schedules' },
-                  { text: 'Subusers', link: '/docs/panel/features/server/subusers' },
-                  { text: 'Backups', link: '/docs/panel/features/server/backups' },
+                  { text: 'Консоль', link: '/docs/panel/features/server/console' },
+                  { text: 'Файлы', link: '/docs/panel/features/server/files' },
+                  { text: 'Базы данных', link: '/docs/panel/features/server/databases' },
+                  { text: 'Расписания', link: '/docs/panel/features/server/schedules' },
+                  { text: 'Субпользователи', link: '/docs/panel/features/server/subusers' },
+                  { text: 'Резервные копии', link: '/docs/panel/features/server/backups' },
                   {
-                    text: 'Network',
+                    text: 'Сеть',
                     link: '/docs/panel/features/server/network/',
                     collapsed: true,
                     items: [
-                      { text: 'Allocations', link: '/docs/panel/features/server/network/allocations' },
-                      { text: 'Firewall', link: '/docs/panel/features/server/network/firewall' },
-                      { text: 'Connections', link: '/docs/panel/features/server/network/connections' },
+                      { text: 'Распределения', link: '/docs/panel/features/server/network/allocations' },
+                      { text: 'Брандмауэр', link: '/docs/panel/features/server/network/firewall' },
+                      { text: 'Соединения', link: '/docs/panel/features/server/network/connections' },
                     ],
                   },
-                  { text: 'Startup', link: '/docs/panel/features/server/startup' },
-                  { text: 'Mounts', link: '/docs/panel/features/server/mounts' },
-                  { text: 'Settings', link: '/docs/panel/features/server/settings' },
-                  { text: 'Activity', link: '/docs/panel/features/server/activity' },
+                  { text: 'Запуск', link: '/docs/panel/features/server/startup' },
+                  { text: 'Монтирования', link: '/docs/panel/features/server/mounts' },
+                  { text: 'Настройки', link: '/docs/panel/features/server/settings' },
+                  { text: 'Активность', link: '/docs/panel/features/server/activity' },
                 ],
               },
               {
-                text: 'Admin',
+                text: 'Администрирование',
                 link: '/docs/panel/features/admin/',
                 collapsed: true,
                 items: [
                   {
-                    text: 'System',
+                    text: 'Система',
                     collapsed: true,
                     items: [
-                      { text: 'Settings', link: '/docs/panel/features/admin/settings' },
-                      { text: 'Announcements', link: '/docs/panel/features/admin/announcements' },
-                      { text: 'Assets', link: '/docs/panel/features/admin/assets' },
-                      { text: 'Extensions', link: '/docs/panel/features/admin/extensions' },
+                      { text: 'Настройки', link: '/docs/panel/features/admin/settings' },
+                      { text: 'Объявления', link: '/docs/panel/features/admin/announcements' },
+                      { text: 'Ресурсы', link: '/docs/panel/features/admin/assets' },
+                      { text: 'Расширения', link: '/docs/panel/features/admin/extensions' },
                     ],
                   },
                   {
-                    text: 'Infrastructure',
+                    text: 'Инфраструктура',
                     collapsed: true,
                     items: [
-                      { text: 'Locations', link: '/docs/panel/features/admin/locations' },
-                      { text: 'Nodes', link: '/docs/panel/features/admin/nodes' },
-                      { text: 'Servers', link: '/docs/panel/features/admin/servers' },
+                      { text: 'Локации', link: '/docs/panel/features/admin/locations' },
+                      { text: 'Узлы', link: '/docs/panel/features/admin/nodes' },
+                      { text: 'Серверы', link: '/docs/panel/features/admin/servers' },
                     ],
                   },
                   {
-                    text: 'Users & Access',
+                    text: 'Пользователи и доступ',
                     collapsed: true,
                     items: [
-                      { text: 'Users', link: '/docs/panel/features/admin/users' },
-                      { text: 'Roles', link: '/docs/panel/features/admin/roles' },
-                      { text: 'OAuth Providers', link: '/docs/panel/features/admin/oauth-providers' },
-                      { text: 'Activity', link: '/docs/panel/features/admin/activity' },
+                      { text: 'Пользователи', link: '/docs/panel/features/admin/users' },
+                      { text: 'Роли', link: '/docs/panel/features/admin/roles' },
+                      { text: 'OAuth-провайдеры', link: '/docs/panel/features/admin/oauth-providers' },
+                      { text: 'Активность', link: '/docs/panel/features/admin/activity' },
                     ],
                   },
                   {
-                    text: 'Nests & Eggs',
+                    text: 'Сеты и эгги',
                     collapsed: true,
                     items: [
-                      { text: 'Nests', link: '/docs/panel/features/admin/nests' },
-                      { text: 'Egg Configurations', link: '/docs/panel/features/admin/egg-configurations' },
-                      { text: 'Egg Repositories', link: '/docs/panel/features/admin/egg-repositories' },
+                      { text: 'Сеты', link: '/docs/panel/features/admin/nests' },
+                      { text: 'Конфигурации эггов', link: '/docs/panel/features/admin/egg-configurations' },
+                      { text: 'Репозитории эггов', link: '/docs/panel/features/admin/egg-repositories' },
                     ],
                   },
                   {
-                    text: 'Databases',
+                    text: 'Базы данных',
                     collapsed: true,
                     items: [
-                      { text: 'Database Hosts', link: '/docs/panel/features/admin/database-hosts' },
-                      { text: 'Database Agent Hosts', link: '/docs/panel/features/admin/database-agent-hosts' },
-                      { text: 'Database Agent Templates', link: '/docs/panel/features/admin/database-agent-templates' },
+                      { text: 'Хосты баз данных', link: '/docs/panel/features/admin/database-hosts' },
+                      { text: 'Хосты агента баз данных', link: '/docs/panel/features/admin/database-agent-hosts' },
+                      { text: 'Шаблоны агента баз данных', link: '/docs/panel/features/admin/database-agent-templates' },
                     ],
                   },
                   {
-                    text: 'Storage',
+                    text: 'Хранилище',
                     collapsed: true,
                     items: [
-                      { text: 'Mounts', link: '/docs/panel/features/admin/mounts' },
-                      { text: 'Backup Configurations', link: '/docs/panel/features/admin/backup-configurations' },
-                      { text: 'System Backup Policies', link: '/docs/panel/features/admin/system-backup-policies' },
+                      { text: 'Монтирования', link: '/docs/panel/features/admin/mounts' },
+                      { text: 'Конфигурации резервных копий', link: '/docs/panel/features/admin/backup-configurations' },
+                      { text: 'Системные политики резервного копирования', link: '/docs/panel/features/admin/system-backup-policies' },
                     ],
                   },
                 ],
@@ -418,16 +422,16 @@ export default withMermaid({
             ],
           },
           {
-            text: 'Installation',
+            text: 'Установка',
             link: '/docs/panel/installation/',
             collapsed: true,
             items: [
-              { text: 'Your first VPS', link: '/docs/panel/installation/first-vps' },
+              { text: 'Ваш первый VPS', link: '/docs/panel/installation/first-vps' },
               { text: 'Docker', link: '/docs/panel/installation/docker' },
-              { text: 'Binary', link: '/docs/panel/installation/binary' },
-              { text: 'Package Manager', link: '/docs/panel/installation/pkgmanager' },
+              { text: 'Бинарный файл', link: '/docs/panel/installation/binary' },
+              { text: 'Менеджер пакетов', link: '/docs/panel/installation/pkgmanager' },
               {
-                text: 'External Methods',
+                text: 'Сторонние методы',
                 link: '/docs/panel/installation/external-methods',
                 collapsed: true,
                 items: [
@@ -438,56 +442,56 @@ export default withMermaid({
               },
             ],
           },
-          { text: 'Updating', link: '/docs/panel/updating' },
+          { text: 'Обновление', link: '/docs/panel/updating' },
           {
-            text: 'Next Steps',
+            text: 'Дальнейшие шаги',
             link: '/docs/panel/next-steps/',
             collapsed: true,
-            items: [{ text: 'Adding egg repositories', link: '/docs/panel/next-steps/egg-repos' }],
+            items: [{ text: 'Добавление репозиториев эггов', link: '/docs/panel/next-steps/egg-repos' }],
           },
           {
-            text: 'Extensions',
+            text: 'Расширения',
             link: '/docs/panel/extensions/',
             collapsed: true,
             items: [
-              { text: 'Installing Extensions', link: '/docs/panel/extensions/installing-extensions' },
-              { text: 'Uninstalling Extensions', link: '/docs/panel/extensions/uninstalling-extensions' },
-              { text: 'Disabling Extensions', link: '/docs/panel/extensions/disabling-extensions' },
-              { text: 'Switching to the Heavy Image', link: '/docs/panel/extensions/switching-to-the-heavy-image' },
-              { text: 'Patching and Adding Translations', link: '/docs/panel/extensions/patching-translations' },
-              { text: 'Development Environment', link: '/docs/panel/extensions/dev-environment' },
-              { text: 'Extension File Structure', link: '/docs/panel/extensions/file-structure' },
-              { text: 'Getting your Extension ready', link: '/docs/panel/extensions/getting-your-extension-ready' },
+              { text: 'Установка расширений', link: '/docs/panel/extensions/installing-extensions' },
+              { text: 'Удаление расширений', link: '/docs/panel/extensions/uninstalling-extensions' },
+              { text: 'Отключение расширений', link: '/docs/panel/extensions/disabling-extensions' },
+              { text: 'Переход на тяжёлый образ', link: '/docs/panel/extensions/switching-to-the-heavy-image' },
+              { text: 'Исправление и добавление переводов', link: '/docs/panel/extensions/patching-translations' },
+              { text: 'Среда разработки', link: '/docs/panel/extensions/dev-environment' },
+              { text: 'Структура файлов расширения', link: '/docs/panel/extensions/file-structure' },
+              { text: 'Подготовка расширения', link: '/docs/panel/extensions/getting-your-extension-ready' },
               {
-                text: 'Concepts',
+                text: 'Концепции',
                 collapsed: true,
                 items: [
-                  { text: 'Theming', link: '/docs/panel/extensions/concepts/theming' },
-                  { text: 'Events', link: '/docs/panel/extensions/concepts/events' },
-                  { text: 'Settings', link: '/docs/panel/extensions/concepts/settings' },
-                  { text: 'User Settings', link: '/docs/panel/extensions/concepts/user-settings' },
-                  { text: 'Routing', link: '/docs/panel/extensions/concepts/routing' },
-                  { text: 'Permissions', link: '/docs/panel/extensions/concepts/permissions' },
-                  { text: 'CLI Commands', link: '/docs/panel/extensions/concepts/cli-commands' },
+                  { text: 'Темизация', link: '/docs/panel/extensions/concepts/theming' },
+                  { text: 'События', link: '/docs/panel/extensions/concepts/events' },
+                  { text: 'Настройки', link: '/docs/panel/extensions/concepts/settings' },
+                  { text: 'Пользовательские настройки', link: '/docs/panel/extensions/concepts/user-settings' },
+                  { text: 'Маршрутизация', link: '/docs/panel/extensions/concepts/routing' },
+                  { text: 'Разрешения', link: '/docs/panel/extensions/concepts/permissions' },
+                  { text: 'CLI-команды', link: '/docs/panel/extensions/concepts/cli-commands' },
                   {
-                    text: 'Background Tasks and Shutdown Handlers',
+                    text: 'Фоновые задачи и обработчики завершения',
                     link: '/docs/panel/extensions/concepts/background-tasks-and-shutdown-handlers',
                   },
                   {
-                    text: 'Update Checks and Extension Calls',
+                    text: 'Проверка обновлений и вызовы расширений',
                     link: '/docs/panel/extensions/concepts/update-checks-and-extension-calls',
                   },
-                  { text: 'Frontend API Calls', link: '/docs/panel/extensions/concepts/frontend-api' },
-                  { text: 'Activity Logging', link: '/docs/panel/extensions/concepts/activity-logging' },
-                  { text: 'Translations', link: '/docs/panel/extensions/concepts/translations' },
-                  { text: 'Mounting UI', link: '/docs/panel/extensions/concepts/mounting-ui' },
-                  { text: 'Quick Actions', link: '/docs/panel/extensions/concepts/quick-actions' },
-                  { text: 'Forms', link: '/docs/panel/extensions/concepts/forms' },
-                  { text: 'Toasts', link: '/docs/panel/extensions/concepts/toasts' },
-                  { text: 'Extending Models', link: '/docs/panel/extensions/concepts/extending-models' },
-                  { text: 'Email Templates', link: '/docs/panel/extensions/concepts/email-templates' },
-                  { text: 'Speaking Game Protocols', link: '/docs/panel/extensions/concepts/speaking-game-protocols' },
-                  { text: 'File Storage', link: '/docs/panel/extensions/concepts/file-storage' },
+                  { text: 'Вызовы API из фронтенда', link: '/docs/panel/extensions/concepts/frontend-api' },
+                  { text: 'Журналирование активности', link: '/docs/panel/extensions/concepts/activity-logging' },
+                  { text: 'Переводы', link: '/docs/panel/extensions/concepts/translations' },
+                  { text: 'Монтирование UI', link: '/docs/panel/extensions/concepts/mounting-ui' },
+                  { text: 'Быстрые действия', link: '/docs/panel/extensions/concepts/quick-actions' },
+                  { text: 'Формы', link: '/docs/panel/extensions/concepts/forms' },
+                  { text: 'Тосты', link: '/docs/panel/extensions/concepts/toasts' },
+                  { text: 'Расширение моделей', link: '/docs/panel/extensions/concepts/extending-models' },
+                  { text: 'Шаблоны писем', link: '/docs/panel/extensions/concepts/email-templates' },
+                  { text: 'Обращение к игровым протоколам', link: '/docs/panel/extensions/concepts/speaking-game-protocols' },
+                  { text: 'Файловое хранилище', link: '/docs/panel/extensions/concepts/file-storage' },
                 ],
               },
             ],
@@ -498,30 +502,30 @@ export default withMermaid({
         text: 'Wings',
         link: '/docs/wings/',
         items: [
-          { text: 'Overview', link: '/docs/wings/overview' },
-          { text: 'Configuration', link: '/docs/wings/configuration' },
+          { text: 'Обзор', link: '/docs/wings/overview' },
+          { text: 'Конфигурация', link: '/docs/wings/configuration' },
           {
-            text: 'Installation',
+            text: 'Установка',
             link: '/docs/wings/installation/',
             collapsed: true,
             items: [
               { text: 'Docker', link: '/docs/wings/installation/docker' },
-              { text: 'Binary', link: '/docs/wings/installation/binary' },
-              { text: 'Package Manager', link: '/docs/wings/installation/pkgmanager' },
+              { text: 'Бинарный файл', link: '/docs/wings/installation/binary' },
+              { text: 'Менеджер пакетов', link: '/docs/wings/installation/pkgmanager' },
             ],
           },
-          { text: 'Updating', link: '/docs/wings/updating' },
+          { text: 'Обновление', link: '/docs/wings/updating' },
           {
-            text: 'Next Steps',
+            text: 'Дальнейшие шаги',
             link: '/docs/wings/next-steps/',
             collapsed: true,
             items: [
-              { text: 'Configuring a New Node', link: '/docs/wings/next-steps/configure-node' },
-              { text: 'Setting up Allocations', link: '/docs/wings/next-steps/setting-up-allocations' },
+              { text: 'Настройка нового узла', link: '/docs/wings/next-steps/configure-node' },
+              { text: 'Настройка распределений', link: '/docs/wings/next-steps/setting-up-allocations' },
             ],
           },
           {
-            text: 'Disk Limiters',
+            text: 'Ограничители диска',
             link: '/docs/wings/disk-limiters/',
             collapsed: true,
             items: [
@@ -532,14 +536,14 @@ export default withMermaid({
             ],
           },
           {
-            text: 'Advanced',
+            text: 'Дополнительно',
             link: '/docs/wings/advanced/',
             collapsed: true,
             items: [
-              { text: 'Backup Configurations', link: '/docs/wings/advanced/backup-configurations' },
-              { text: 'Exposing Wings in a Homelab', link: '/docs/wings/advanced/exposing-wings-in-a-homelab' },
-              { text: 'The Private Network', link: '/docs/wings/advanced/private-network' },
-              { text: 'Running Wings with Podman', link: '/docs/wings/advanced/running-wings-with-podman' },
+              { text: 'Конфигурации резервных копий', link: '/docs/wings/advanced/backup-configurations' },
+              { text: 'Доступ к Wings в домашней лаборатории', link: '/docs/wings/advanced/exposing-wings-in-a-homelab' },
+              { text: 'Частная сеть', link: '/docs/wings/advanced/private-network' },
+              { text: 'Запуск Wings с Podman', link: '/docs/wings/advanced/running-wings-with-podman' },
             ],
           },
         ],
@@ -548,33 +552,33 @@ export default withMermaid({
         text: 'DB Agent',
         link: '/docs/db-agent/',
         items: [
-          { text: 'Overview', link: '/docs/db-agent/overview' },
-          { text: 'Configuration', link: '/docs/db-agent/configuration' },
-          { text: 'Templates', link: '/docs/db-agent/templates' },
+          { text: 'Обзор', link: '/docs/db-agent/overview' },
+          { text: 'Конфигурация', link: '/docs/db-agent/configuration' },
+          { text: 'Шаблоны', link: '/docs/db-agent/templates' },
           {
-            text: 'Installation',
+            text: 'Установка',
             link: '/docs/db-agent/installation/',
             collapsed: true,
             items: [
               { text: 'Docker', link: '/docs/db-agent/installation/docker' },
-              { text: 'Binary', link: '/docs/db-agent/installation/binary' },
-              { text: 'Package Manager', link: '/docs/db-agent/installation/pkgmanager' },
+              { text: 'Бинарный файл', link: '/docs/db-agent/installation/binary' },
+              { text: 'Менеджер пакетов', link: '/docs/db-agent/installation/pkgmanager' },
             ],
           },
-          { text: 'Updating', link: '/docs/db-agent/updating' },
+          { text: 'Обновление', link: '/docs/db-agent/updating' },
         ],
       },
       {
-        text: 'Additional',
+        text: 'Дополнительно',
         link: '/docs/additional/',
         items: [
           {
-            text: 'Migrations',
+            text: 'Миграции',
             link: '/docs/additional/migrations/',
             collapsed: true,
             items: [
               {
-                text: 'From another Panel',
+                text: 'Из другой панели',
                 collapsed: true,
                 items: [
                   { text: 'Pterodactyl', link: '/docs/additional/migrations/pterodactyl' },
@@ -582,17 +586,17 @@ export default withMermaid({
                 ],
               },
               {
-                text: 'To another Instance',
+                text: 'На другой экземпляр',
                 collapsed: true,
                 items: [
                   { text: 'Docker', link: '/docs/additional/migrations/calagopus/docker' },
-                  { text: 'Standalone', link: '/docs/additional/migrations/calagopus/standalone' },
+                  { text: 'Автономно', link: '/docs/additional/migrations/calagopus/standalone' },
                 ],
               },
             ],
           },
           {
-            text: 'Database Hosts',
+            text: 'Хосты баз данных',
             link: '/docs/additional/database-hosts/',
             collapsed: true,
             items: [
@@ -601,25 +605,25 @@ export default withMermaid({
               { text: 'MongoDB', link: '/docs/additional/database-hosts/mongodb' },
             ],
           },
-          { text: 'SSL Certificates', link: '/docs/additional/ssl-certificates' },
-          { text: 'Reverse Proxies', link: '/docs/additional/reverse-proxies' },
+          { text: 'SSL-сертификаты', link: '/docs/additional/ssl-certificates' },
+          { text: 'Обратные прокси', link: '/docs/additional/reverse-proxies' },
           {
-            text: 'Setting up OAuth',
+            text: 'Настройка OAuth',
             link: '/docs/additional/setting-up-oauth/',
             collapsed: true,
             items: [
               { text: 'GitHub', link: '/docs/additional/setting-up-oauth/github' },
               { text: 'Google', link: '/docs/additional/setting-up-oauth/google' },
               { text: 'Discord', link: '/docs/additional/setting-up-oauth/discord' },
-              { text: 'Generic', link: '/docs/additional/setting-up-oauth/generic' },
+              { text: 'Универсальный', link: '/docs/additional/setting-up-oauth/generic' },
             ],
           },
-          { text: 'Troubleshooting', link: '/docs/additional/troubleshooting' },
+          { text: 'Устранение неполадок', link: '/docs/additional/troubleshooting' },
         ],
       },
 
       {
-        text: 'Integrations',
+        text: 'Интеграции',
         link: '/docs/integrations/',
         items: [
           { text: 'VS Code', link: '/docs/integrations/vscode' },
@@ -646,12 +650,12 @@ export default withMermaid({
 
     editLink: {
       pattern: 'https://github.com/calagopus/website/edit/main/web/:path',
-      text: 'Edit this page on GitHub',
+      text: 'Редактировать эту страницу на GitHub',
     },
   },
 
   sitemap: {
-    hostname: 'https://calagopus.com',
+    hostname: SITE_URL,
   },
 
   async buildEnd(siteConfig) {
@@ -754,8 +758,8 @@ export default withMermaid({
 
     if (pageData.relativePath.startsWith('compare/')) {
       const trail = [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-        { '@type': 'ListItem', position: 2, name: 'Compare', item: `${SITE_URL}/compare/` },
+        { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Сравнение', item: `${SITE_URL}/compare/` },
       ];
       if (pageData.relativePath !== 'compare/index.md') {
         trail.push({ '@type': 'ListItem', position: 3, name: pageData.title, item: canonicalUrl });
