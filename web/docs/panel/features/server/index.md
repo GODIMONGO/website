@@ -1,50 +1,50 @@
 ---
-title: Server
-description: A tour of the Calagopus server view, the tabs you use to run, configure, and monitor a single server.
+title: Сервер
+description: Обзор серверного представления Calagopus — вкладок, используемых для запуска, настройки и мониторинга одного сервера.
 ---
 
-# Server
+# Сервер
 
-Clicking a server on the [Servers](../dashboard/servers.md) page opens the server view, where everything about that one server lives. Each tab only appears if you have the matching [permission](../dashboard/permissions.md) on that server, and admins can reshape the tab set per egg via [route configurations](../admin/egg-configurations.md#route-configuration): hiding pages, grouping them under dividers, or adding external links.
+Клик по серверу на странице [Серверы](../dashboard/servers.md) открывает серверное представление, где находится всё, что относится к этому серверу. Каждая вкладка появляется только при наличии соответствующего [разрешения](../dashboard/permissions.md) на этом сервере, а администраторы могут менять набор вкладок для каждого эгга через [конфигурации маршрутов](../admin/egg-configurations.md#конфигурация-маршрута): скрывать страницы, группировать их под разделителями или добавлять внешние ссылки.
 
-Above every tab, the panel surfaces server-wide state: dismissible per-server announcements, status banners while the server is transferring (with progress, ETA, and an admin-only **Cancel**), suspended, restoring a backup, installing (cancellable with the `settings.cancel-install` permission), under node maintenance, or pending a restart, plus a websocket banner with a reconnect countdown if the live connection drops. Eggs whose install script reports its progress show a progress bar and a label in the installing banner instead of a plain "installing" message. While a transfer, restore, or installation is running, the same progress also sits in a toast in the corner, so it stays in view on every tab of the server.
+Над каждой вкладкой панель показывает общее состояние сервера: закрываемые объявления для каждого сервера, баннеры статуса при передаче сервера (с прогрессом, ETA и кнопкой **Отмена** только для администратора), приостановке, восстановлении резервной копии, установке (отменяемо с разрешением `settings.cancel-install`), обслуживании узла или ожидании перезапуска, а также websocket-баннер с обратным отсчётом переподключения, если живое соединение разорвано. У эггов, чей скрипт установки сообщает прогресс, в баннере установки отображается полоса прогресса и метка вместо обычного сообщения «установка». Пока идёт передача, восстановление или установка, тот же прогресс также виден в тосте в углу, поэтому остаётся в поле зрения на каждой вкладке сервера.
 
-## When the Server Is Blocked
+## Когда сервер заблокирован
 
-Some states replace the whole server view rather than sitting above it, and two of them need you to acknowledge the failure before you get back in.
+Некоторые состояния заменяют всё серверное представление, а не висят над ним, и два из них требуют подтверждения сбоя, прежде чем вы вернётесь.
 
-**Installation failed.** If the administrator has enabled **Allow Acknowledging Installation Failure**, an **Acknowledge Failure** button appears, needing the `settings.cancel-install` permission: "By acknowledging this installation failure, you are confirming that you are aware of the failed installation and have taken any necessary steps to resolve the issue. This will allow you to regain control over the server." With the setting off, only an admin can clear it. Where you can read installation logs, a **View Installation Logs** link sits next to the button.
+**Установка не удалась.** Если администратор включил **Разрешить подтверждать сбой установки**, появляется кнопка **Подтвердить сбой**, требующая разрешение `settings.cancel-install`: «Подтверждая этот сбой установки, вы подтверждаете, что осведомлены о неудачной установке и предприняли необходимые шаги для решения проблемы. Это позволит восстановить контроль над сервером». При выключенной настройке очистить сбой может только администратор. Если вы можете читать логи установки, рядом с кнопкой есть ссылка **Просмотреть логи установки**.
 
-**Backup restore failed.** "This server failed to restore a backup and cannot be accessed until acknowledged. Its files may be incomplete." Acknowledging needs the `backups.restore` permission and unlocks the server again - check the files before trusting them, since a half-restored backup leaves the server in an unknown state.
+**Восстановление резервной копии не удалось.** «Этот сервер не смог восстановить резервную копию и недоступен, пока не будет подтверждён. Его файлы могут быть неполными». Подтверждение требует разрешение `backups.restore` и снова открывает сервер — проверьте файлы, прежде чем доверять им, так как наполовину восстановленная копия оставляет сервер в неизвестном состоянии.
 
-Suspension, node maintenance and an in-progress transfer block the view in the same way, but those clear on their own; there is nothing to acknowledge.
+Приостановка, обслуживание узла и идущая передача блокируют представление так же, но те очищаются сами; подтверждать нечего.
 
-| Page | Description |
+| Страница | Описание |
 | --- | --- |
-| [Console](./console.md) | Live terminal, power controls, resource stats, and graphs |
-| [Files](./files.md) | Browse, edit, and manage the server's files, plus SFTP access |
-| [Databases](./databases.md) | Classic and managed databases for the server |
-| [Schedules](./schedules.md) | Automated action steps with triggers and conditions |
-| [Subusers](./subusers.md) | Give other users scoped access to the server |
-| [Backups](./backups.md) | Server backups, with groups and automatic retention |
-| [Network](./network/index.md) | Allocations, firewall rules, and private connections to other servers |
-| [Startup](./startup.md) | Startup command, Docker image, and egg variables |
-| [Mounts](./mounts.md) | Toggle extra directories mounted into the server |
-| [Settings](./settings.md) | Rename, reinstall, auto-kill, auto-start, and timezone |
-| [Activity](./activity.md) | A log of everything that's happened on the server |
+| [Консоль](./console.md) | Живой терминал, управление питанием, статистика ресурсов и графики |
+| [Файлы](./files.md) | Просмотр, редактирование и управление файлами сервера, а также доступ SFTP |
+| [Базы данных](./databases.md) | Классические и управляемые базы данных сервера |
+| [Расписания](./schedules.md) | Автоматические шаги действий с триггерами и условиями |
+| [Субпользователи](./subusers.md) | Дайте другим пользователям ограниченный доступ к серверу |
+| [Резервные копии](./backups.md) | Резервные копии сервера, с группами и автоматическим хранением |
+| [Сеть](./network/index.md) | Распределения, правила брандмауэра и частные соединения с другими серверами |
+| [Запуск](./startup.md) | Команда запуска, Docker-образ и переменные эгга |
+| [Монтирования](./mounts.md) | Переключение дополнительных каталогов, смонтированных в сервер |
+| [Настройки](./settings.md) | Переименование, переустановка, авто-килл, авто-старт и часовой пояс |
+| [Активность](./activity.md) | Журнал всего, что происходило на сервере |
 
-## Server Header
+## Заголовок сервера
 
-The sidebar stays the same on every tab. Above it, the [Quick actions](../dashboard/index.md#quick-actions) palette (`Ctrl+Space`) carries the server's pages and its state-aware power actions. At the top, a status card shows the server's name, its current state (**Running**, **Starting**, **Stopping**, **Offline**, or a special status like installing or transferring), and its uptime while running.
+Боковая панель остаётся одинаковой на каждой вкладке. Над ней палитра [Быстрых действий](../dashboard/index.md#быстрые-действия) (`Ctrl+Space`) переносит страницы сервера и его состояние-зависимые действия питания. Вверху карточка статуса показывает имя сервера, его текущее состояние (**Работает**, **Запускается**, **Останавливается**, **Не в сети** или специальный статус вроде установки или передачи) и время работы, когда он работает.
 
-Below that sit quick power buttons: **Start** while the server is offline, **Stop** while it runs, and a restart button. While the server is stopping, the button becomes **Kill**, with the same force-stop confirmation as on the [Console](./console.md).
+Ниже — быстрые кнопки питания: **Запустить**, когда сервер не в сети, **Остановить**, когда работает, и кнопка перезапуска. Пока сервер останавливается, кнопка становится **Убить**, с тем же подтверждением принудительной остановки, что и в [Консоли](./console.md).
 
 <img src="./images/index/status-card.webp" width="200" alt="" />
 
-Above the tabs, **Servers** takes you back to the dashboard.
+Над вкладками **Серверы** возвращает на панель управления.
 
 ::: info
-Admins also see an **Admin** link and a **View in Admin Area** link, the latter jumping straight to this server in the Admin area.
+Администраторы также видят ссылку **Администрирование** и **Просмотреть в области администрирования**, последняя сразу переходит к этому серверу в области администрирования.
 :::
 
-At the bottom, a server switcher shows the current server's name; click it to search your servers and switch to another one without going back to the dashboard, landing on the same page you were on. The `#` search in [Quick actions](../dashboard/index.md#quick-actions) does the same, and picking the server you are already on takes you back to its console. The profile box below doubles as a search box, just like on the [Dashboard](../dashboard/index.md).
+Внизу переключатель серверов показывает имя текущего сервера; кликните, чтобы найти свой сервер и переключиться на другой без возврата на панель управления, оставаясь на той же странице. Поиск `#` в [Быстрых действиях](../dashboard/index.md#быстрые-действия) делает то же, и выбор сервера, на котором вы уже находитесь, возвращает в его консоль. Поле профиля внизу работает как поле поиска, как и на [Панели управления](../dashboard/index.md).
